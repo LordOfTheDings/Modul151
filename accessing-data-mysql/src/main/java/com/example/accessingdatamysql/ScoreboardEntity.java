@@ -1,0 +1,30 @@
+package com.example.accessingdatamysql;
+
+import javax.persistence.*;
+
+
+@Entity
+public class ScoreboardEntity {
+    @Id
+    @GeneratedValue(strategy=GenerationType.AUTO)
+    private Integer Id;
+
+    @ManyToOne
+    private ScoreboardentryEntity scoreboardEntrys;
+
+    public ScoreboardentryEntity getScoreboardEntrys() {
+        return scoreboardEntrys;
+    }
+
+    public void setScoreboardEntrys(ScoreboardentryEntity scoreboardEntrys) {
+        this.scoreboardEntrys = scoreboardEntrys;
+    }
+
+    public Integer getId() {
+        return Id;
+    }
+
+    public void setId(Integer id) {
+        Id = id;
+    }
+}
