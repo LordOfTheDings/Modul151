@@ -1,0 +1,13 @@
+<p>game works!</p>
+<router-outlet></router-outlet>
+<div>
+  <label for="nickname">Nickname</label>
+  <input type="text"
+         id="nickname"
+         name="nickname"
+         placeholder="Enter your nickname"
+         [(ngModel)]="model.name"/>
+</div>
+<button (click)="signup()">
+  <span>Submit</span>
+</button>

@@ -1,4 +1,4 @@
-package com.example.accessingdatamysql;
+package ch.bbbaden.gluecksrad;
 import javax.persistence.*;
 
 @Entity

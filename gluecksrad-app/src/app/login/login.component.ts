@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -6,14 +7,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+  model : LoginViewModel ={
+    username:'',
+    password:''
+  };
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
   }
-  loginUser(event){
-    event.preventDefault();
-    console.log(event);
+   login():void{
+    let url = "http://localhost:4200/login";
+    this.http.post(url,this.model).subscribe(
+      res=>{
+        location.reload();
+      },
+      error => {
+        alert("An error occured, while sending login data.");
+      },
+    )
   }
-
+}
+export interface LoginViewModel {
+  password: string;
+  username : string;
 }

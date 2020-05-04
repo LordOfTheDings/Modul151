@@ -1,4 +1,4 @@
-package com.example.accessingdatamysql;
+package ch.bbbaden.gluecksrad;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -5,19 +5,23 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
-import { AdminComponent } from './admin/admin.component';
 import {RouterModule} from "@angular/router";
+import {FormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import { GameComponent } from './game/game.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
-    AdminComponent
+    GameComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {
         path: '',
@@ -28,12 +32,16 @@ import {RouterModule} from "@angular/router";
         component:LoginComponent
       },
       {
-        path:'admin',
-        component: AdminComponent
+        path:'home',
+        component:HomeComponent
+      },
+      {
+        path:'game',
+        component: GameComponent
       }
     ])
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent,HomeComponent,LoginComponent,GameComponent]
 })
 export class AppModule { }
