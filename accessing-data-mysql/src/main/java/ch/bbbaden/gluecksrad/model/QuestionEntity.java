@@ -1,4 +1,4 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
 
 import javax.persistence.*;
 
@@ -23,12 +23,12 @@ public class QuestionEntity {
         return text;
     }
 
-    public AnswerEntity getAnswerCorrect() {
-        return answerCorrect;
+    public String getAnswerCorrect() {
+        return answerCorrect.getText();
     }
 
-    public AnswerEntity getAnswerIncorrect() {
-        return answerIncorrect;
+    public String getAnswerIncorrect() {
+        return answerIncorrect.getText();
     }
 
     public CategoryEntity getCategory() {

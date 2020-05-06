@@ -1,4 +1,6 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
+
+import ch.bbbaden.gluecksrad.model.ScoreboardentryEntity;
 
 import javax.persistence.*;
 

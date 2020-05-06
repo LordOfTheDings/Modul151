@@ -8,14 +8,21 @@ import { HomeComponent } from './home/home.component';
 import {RouterModule} from "@angular/router";
 import {FormsModule} from "@angular/forms";
 import {HttpClientModule} from "@angular/common/http";
-import { GameComponent } from './game/game.component';
-
+import {GameComponent } from './game/game.component';
+import { PlayComponent } from './play/play.component';
+import { AdminComponent } from './admin/admin.component';
+import { QuestionsComponent } from './questions/questions.component';
+import { ScoreboardComponent } from './game/scoreboard/scoreboard.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     HomeComponent,
     GameComponent,
+    PlayComponent,
+    AdminComponent,
+    QuestionsComponent,
+    ScoreboardComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,6 +45,14 @@ import { GameComponent } from './game/game.component';
       {
         path:'game',
         component: GameComponent
+      },
+      {
+        path:'admin/questions',
+        component:QuestionsComponent
+      },
+      {
+        path:'game/scoreboard',
+        component:ScoreboardComponent
       }
     ])
   ],

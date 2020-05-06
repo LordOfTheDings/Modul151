@@ -1,18 +1,19 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
+
+import com.sun.istack.NotNull;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class AnswerEntity {
+public class CategoryEntity {
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
+    @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
+    @NotNull
     private String text;
-
-    public AnswerEntity() {
-    }
 
     public Integer getId() {
         return Id;
@@ -22,11 +23,10 @@ public class AnswerEntity {
         return text;
     }
 
-    public void setId(Integer id) {
-        Id = id;
-    }
-
     public void setText(String text) {
         this.text = text;
+    }
+    public void setId(Integer id){
+        this.Id = id;
     }
 }

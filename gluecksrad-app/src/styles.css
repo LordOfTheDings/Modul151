@@ -2,3 +2,50 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import url(~bootstrap/dist/css/bootstrap.min.css);
 @import url(~font-awesome/css/font-awesome.css);
+.labelText{
+  color:#ffff;
+}
+button {
+  background-color: #000000;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  margin-top:10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+}
+.topNav {
+  background-color: #000000;
+  overflow: hidden;
+  position: fixed;
+  top:0;
+  left:0;
+
+}
+body{
+  top:300px;
+}
+/* Style the links inside the navigation bar */
+.topNav a {
+  float: left;
+  color: #64c3c6;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+  transition-duration: 100ms;
+}
+
+/* Change the color of links on hover */
+.topNav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Add a color to the active/current link */
+.topNav a.active {
+  background-color: #4CAF50;
+  color: white;
+}

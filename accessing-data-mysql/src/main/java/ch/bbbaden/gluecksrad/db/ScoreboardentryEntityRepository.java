@@ -1,5 +1,6 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.db;
 
+import ch.bbbaden.gluecksrad.model.ScoreboardentryEntity;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Optional;

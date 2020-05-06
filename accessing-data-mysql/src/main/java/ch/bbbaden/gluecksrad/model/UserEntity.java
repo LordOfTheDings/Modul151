@@ -1,4 +1,4 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
 import javax.persistence.*;
 
 @Entity
@@ -7,9 +7,19 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
+    @Column(unique = true)
     private String userName;
-    private String email;
+    @Column(length=255)
     private String password;
+
+    public UserEntity() {
+
+    }
+
+    public UserEntity(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 
     public void setId(Integer id) {
         Id = id;
@@ -17,10 +27,6 @@ public class UserEntity {
 
     public void setUserName(String userName) {
         this.userName = userName;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public void setPassword(String password) {
@@ -33,10 +39,6 @@ public class UserEntity {
 
     public String getUserName() {
         return userName;
-    }
-
-    public String getEmail() {
-        return email;
     }
 
     public String getPassword() {

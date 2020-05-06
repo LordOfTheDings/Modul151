@@ -1,0 +1,8 @@
+@import '~bootstrap/dist/css/bootstrap.min.css';
+@import url(~bootstrap/dist/css/bootstrap.min.css);
+@import url(~font-awesome/css/font-awesome.css);
+
+html{
+  background-image: url("src/assets/Gluecksrad.png");
+  background-size: 100%100%;
+}

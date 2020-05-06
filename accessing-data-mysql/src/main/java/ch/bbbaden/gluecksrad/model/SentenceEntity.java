@@ -1,4 +1,4 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
 
 import javax.persistence.*;
 

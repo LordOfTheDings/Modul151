@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {ApiService} from "../shared/api.service";
+import {User} from "../game/scoreboard/model/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -7,28 +9,28 @@ import {HttpClient} from "@angular/common/http";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model : LoginViewModel ={
-    username:'',
+  model : User ={
+    userName:'',
     password:''
   };
+  loggedIn :boolean = false;
 
-  constructor(private http: HttpClient) { }
+  constructor(private router:Router, private apiService:ApiService) { }
 
   ngOnInit(): void {
   }
-   login():void{
-    let url = "http://localhost:4200/login";
-    this.http.post(url,this.model).subscribe(
-      res=>{
-        location.reload();
-      },
-      error => {
-        alert("An error occured, while sending login data.");
-      },
-    )
-  }
+   login():void {
+   this.apiService.logIn(this.model).subscribe(
+     res=>{
+       if(res!= null){
+         this.loggedIn = true;
+         this.model=res;
+       }
+     },
+     err=>{
+       alert("error");
+     }
+   )
+    }
 }
-export interface LoginViewModel {
-  password: string;
-  username : string;
-}
+

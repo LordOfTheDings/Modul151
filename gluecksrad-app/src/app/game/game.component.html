@@ -1,13 +1,24 @@
-<p>game works!</p>
-<router-outlet></router-outlet>
-<div>
-  <label for="nickname">Nickname</label>
-  <input type="text"
-         id="nickname"
-         name="nickname"
-         placeholder="Enter your nickname"
-         [(ngModel)]="model.name"/>
+<div id="signup" class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="signup">
+        <div class="row">
+          <label class="labelText" for="nickname">Please enter your nickname</label>
+        </div>
+        <div class="row">
+          <input type="text"
+                 id="nickname"
+                 name="nickname"
+                 placeholder="nickname"
+                 [(ngModel)]="model.name"/>
+        </div>
+        <div class="row">
+          <button style="animation-delay: 200ms" (click)="signup()">
+            <span>Submit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<button (click)="signup()">
-  <span>Submit</span>
-</button>
+

@@ -1,9 +1,8 @@
-package ch.bbbaden.gluecksrad;
+package ch.bbbaden.gluecksrad.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.sun.istack.NotNull;
+
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -11,6 +10,7 @@ public class ScoreboardentryEntity {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     private Integer Id;
+    @NotNull
     private String playername;
     private Date datetime;
     private Integer score;
