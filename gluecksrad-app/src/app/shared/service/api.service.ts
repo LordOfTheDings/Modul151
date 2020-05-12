@@ -100,7 +100,7 @@ export class ApiService {
   }
 
   deleteScoreboardEntry(entry:ScoreboardEntry): Observable<ScoreboardEntry> {
-    return this.http.post<ScoreboardEntry>(this.DELETE_SCOREBOARD_ENTRY_URL,entry);
+    return this.http.delete<ScoreboardEntry>(this.DELETE_SCOREBOARD_ENTRY_URL+"?id="+entry.id);
   }
 
   deleteAllSentences():Observable<Sentence[]> {

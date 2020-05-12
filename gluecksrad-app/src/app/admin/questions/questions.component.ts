@@ -11,8 +11,8 @@ import {AuthGuard} from "../../shared/guard/auth.guard";
 })
 export class QuestionsComponent implements OnInit {
   questions:Question[];
-  constructor(private questionService:QuestionService,
-              private router:Router,
+  constructor(private questionService: QuestionService,
+              private router: Router,
               route: ActivatedRoute,
               guard: AuthGuard) {
     guard.canActivate(route.snapshot, router.routerState.snapshot);
@@ -21,7 +21,7 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestions();
   }
-public getQuestions(){
+  public getQuestions(){
   this.questionService.getAllQuestions().subscribe(
   res=>{
     this.questions = res;

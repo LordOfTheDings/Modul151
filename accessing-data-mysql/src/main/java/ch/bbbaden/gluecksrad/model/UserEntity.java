@@ -11,7 +11,7 @@ public class UserEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     @NotNull
-    private Integer Id;
+    private Integer id;
     @Column(unique = true)
     @NotNull
     @Size(min=1,message="userName must have at least 1 character")
@@ -37,7 +37,7 @@ public class UserEntity {
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public void setUserName(String userName) {
@@ -49,7 +49,7 @@ public class UserEntity {
     }
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public String getUserName() {

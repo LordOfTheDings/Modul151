@@ -9,7 +9,8 @@ import javax.validation.constraints.Size;
 public class QuestionEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer Id;
+    @Column(unique = true)
+    private Integer id;
     @NotNull
     @Size(min=10,message="question must have at least 10 characters")
     private String text;
@@ -24,7 +25,7 @@ public class QuestionEntity {
     private CategoryEntity category;
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public String getText() {
@@ -44,7 +45,7 @@ public class QuestionEntity {
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public void setText(String text) {
