@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.UUID;
 
 
 @Controller
@@ -15,6 +16,7 @@ import javax.validation.Valid;
 public class AdminController {
     @Autowired
     private UserEntityRepository userRepository;
+    private UUID loggedInUserId;
 
     @PostMapping(path = "/login")
     public @ResponseBody

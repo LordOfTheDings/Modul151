@@ -46,7 +46,7 @@ export class EditsentenceComponent implements OnInit {
     );
       this.sentenceForm = this.formBuilder.group({
         text: [this.hasCurrent?this.currentSentence.sentence:'',this.validators],
-        category: [this.hasCurrent?this.currentSentence.category.id:1,this.validators],
+        category: [this.hasCurrent?this.currentSentence.category.id:null,this.validators],
       });
     }
 
@@ -76,6 +76,7 @@ export class EditsentenceComponent implements OnInit {
   save(){
     this.submitted = true;
     if (this.sentenceForm.invalid) {
+      alert("§4");
       return;
     }
     this.loading = true;
