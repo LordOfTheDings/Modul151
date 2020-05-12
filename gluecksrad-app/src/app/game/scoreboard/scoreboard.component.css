@@ -2,3 +2,22 @@
   top:500px;
   background-color: chocolate;
 }
+.center{
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  left: 50%;
+  top:50%;
+  margin-top: 400px;
+  margin-left: -50px;
+}
+table, th, td {
+  border: 1px solid black;
+}
+
+button {
+  margin-top:5px;
+  margin-bottom:5px;
+  margin-left:5px;
+}
+

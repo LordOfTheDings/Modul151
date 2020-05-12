@@ -1,17 +1,23 @@
-<div class="container-fluid">
-  <div class="row">
-  <div class="col-md-12">
-    <div class="signup">
-      <ul>
-        <li *ngFor="let user of users">
-          <span>{{user.userName}}</span>
-        </li>
-      </ul>
-    </div>
-    <div class="row">
-      <img alt="sonnenblumen" src="src/assets/sonnenblumen.jpg"/>
-    </div>
-  </div>
-  </div>
+<div class="container-fluid" style="margin-top:100px">
+     <table class="table table-responsive-lg table-dark">
+       <tr>
+         <th>Rank</th>
+         <th>Playername</th>
+         <th>Score</th>
+         <th>Rounds played</th>
+         <th>Date</th>
+       </tr>
+       <tr *ngFor="let entry of entries">
+       <td>{{entries.indexOf(entry)+1}}</td>
+         <td>{{entry.playerName}}</td>
+         <td>{{entry.score}}</td>
+         <td>{{entry.roundsPlayed}}</td>
+         <td>{{entry.date.toString()}}</td>
+         <button *ngIf="authenticationService.getCurrentUserValue()" class="ui-button" id="remove"
+                 (click)="deleteEntry(entry)">DELETE
+         </button>
+       </tr>
+
+     </table>
 </div>
 

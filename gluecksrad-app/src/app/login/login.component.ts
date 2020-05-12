@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {ApiService} from "../shared/api.service";
-import {User} from "../game/scoreboard/model/user";
-import {Router} from "@angular/router";
+import {User} from "../shared/model/user";
+import { Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {AuthenticationService} from "../shared/service/authentication.service";
+import {first} from "rxjs/operators";
 
 @Component({
   selector: 'app-login',
@@ -9,28 +11,43 @@ import {Router} from "@angular/router";
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  model : User ={
-    userName:'',
-    password:''
-  };
-  loggedIn :boolean = false;
+  loginForm: FormGroup;
+  loading = false;
+  submitted = false;
+  error = '';
 
-  constructor(private router:Router, private apiService:ApiService) { }
-
-  ngOnInit(): void {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authenticationService: AuthenticationService
+  ) {
   }
-   login():void {
-   this.apiService.logIn(this.model).subscribe(
-     res=>{
-       if(res!= null){
-         this.loggedIn = true;
-         this.model=res;
-       }
-     },
-     err=>{
-       alert("error");
-     }
-   )
+ngOnInit(): void {
+  this.loginForm = this.formBuilder.group({
+    username: ['', Validators.required],
+    password: ['', Validators.required]
+  });
+}
+  get f() { return this.loginForm.controls; }
+
+  onSubmit() {
+    this.submitted = true;
+
+    if (this.loginForm.invalid) {
+      return;
     }
+
+    this.loading = true;
+    this.authenticationService.login(this.f.username.value, this.f.password.value)
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.router.navigateByUrl("home");
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        });
+  }
 }
 

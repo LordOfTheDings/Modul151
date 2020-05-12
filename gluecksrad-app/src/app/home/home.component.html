@@ -1,6 +1,4 @@
 <div class="container-fluid">
-  <div class="home">
-
-  </div>
-
+  <h1 *ngIf="!user">Welcome to the game stranger!</h1>
+  <h1 *ngIf="user">Welcome to the game {{user.userName}}!</h1>
 </div>

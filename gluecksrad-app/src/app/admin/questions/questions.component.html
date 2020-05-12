@@ -1,0 +1,32 @@
+<div class="container center">
+  <!-- Note menu -->
+  <div class="row" style="margin-top:12px;">
+    <div class="col-md-8">
+      <!--input type="text"
+             class="form-control"
+             style="width: 100%;"
+             placeholder="Search questions...">-->
+    </div>
+  </div>
+
+<a *ngFor="let question of questions" class="list-group-item list-group-item-action row">
+  <i class="fa fa-list-ul"></i>&nbsp;
+  <span title="">QUESTION:   {{question.text}}   </span>
+  <span title="">CATEGORY:   {{question.category.text}}</span>
+
+  <a title="delete" class="pull-right text-danger">
+    <i (click)= "deleteQuestion(question)"class="fa fa-trash-o"></i>
+  </a>
+  <a title="edit" class="pull-right text-info">
+    <i (click)= "editQuestion(question)"class="fa fa-edit"></i>
+  </a>
+</a>
+  <div class="row">
+      <button class="block btn btn-success pull-right" (click)="addNewQuestion()">
+      <i class="fa fa-plus"> New question</i>
+      </button>
+    <button *ngIf="questions.length>0" class="block btn btn-danger red pull-right" (click)="deleteAll()">
+      <i class="fa fa-remove"> Delete all</i>
+    </button>
+  </div>
+</div>

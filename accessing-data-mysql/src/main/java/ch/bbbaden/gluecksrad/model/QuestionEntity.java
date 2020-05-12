@@ -1,17 +1,25 @@
 package ch.bbbaden.gluecksrad.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class QuestionEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Integer Id;
+    @NotNull
+    @Size(min=10,message="question must have at least 10 characters")
     private String text;
-    @ManyToOne
-    private AnswerEntity answerCorrect;
-    @ManyToOne
-    private AnswerEntity answerIncorrect;
+    @NotNull
+    @Size(min=1,message="answer must have at least 1 character")
+    private String answerCorrect;
+    @NotNull
+    @Size(min=1,message="answer must have at least 1 character")
+    private String answerIncorrect;
+    @NotNull
     @ManyToOne
     private CategoryEntity category;
 
@@ -24,11 +32,11 @@ public class QuestionEntity {
     }
 
     public String getAnswerCorrect() {
-        return answerCorrect.getText();
+        return answerCorrect;
     }
 
     public String getAnswerIncorrect() {
-        return answerIncorrect.getText();
+        return answerIncorrect;
     }
 
     public CategoryEntity getCategory() {
@@ -43,11 +51,11 @@ public class QuestionEntity {
         this.text = text;
     }
 
-    public void setAnswerCorrect(AnswerEntity answerCorrect) {
+    public void setAnswerCorrect(String answerCorrect) {
         this.answerCorrect = answerCorrect;
     }
 
-    public void setAnswerIncorrect(AnswerEntity answerIncorrect) {
+    public void setAnswerIncorrect(String answerIncorrect) {
         this.answerIncorrect = answerIncorrect;
     }
 

@@ -1,16 +1,48 @@
 package ch.bbbaden.gluecksrad.api;
 
 import ch.bbbaden.gluecksrad.db.SentenceEntityRepository;
+import ch.bbbaden.gluecksrad.model.SentenceEntity;
+import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
-@Controller // This means that this class is a Controller
-@RequestMapping(path="/admin") // This means URL's start with /demo (after Application path)
+@Controller
+@RequestMapping(path="/admin/sentences")
 @CrossOrigin
 public class SentenceController {
     @Autowired
     private SentenceEntityRepository sentenceRepository;
 
+    @GetMapping(path="/all")
+    public @ResponseBody
+    Iterable<SentenceEntity> getAllQuestions() {
+        // This returns a JSON or XML with the sentences
+        return sentenceRepository.findAll();
+    }
+
+    @PostMapping(path="/edit")
+    public @ResponseBody
+    void editQuestion(@RequestBody SentenceEntity sentence) {
+        deleteQuestion(sentence);
+        sentenceRepository.save(sentence);
+    }
+
+    @PostMapping(path="/add")
+    public @ResponseBody
+    void addQuestion(@RequestBody SentenceEntity sentence) {
+        sentenceRepository.save(sentence);
+    }
+
+    @PostMapping(path="/delete")
+    public @ResponseBody
+    void deleteQuestion(@RequestBody SentenceEntity sentence) {
+        sentenceRepository.deleteById(sentence.getId());
+    }
+
+    @DeleteMapping(path="/delete/all")
+    public @ResponseBody
+    void deleteAll() {
+        sentenceRepository.deleteAll();
+    }
 }

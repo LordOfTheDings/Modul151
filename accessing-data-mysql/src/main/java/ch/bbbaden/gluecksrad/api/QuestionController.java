@@ -5,13 +5,12 @@ import ch.bbbaden.gluecksrad.model.QuestionEntity;
 import ch.bbbaden.gluecksrad.model.UserEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
-@Controller // This means that this class is a Controller
-@RequestMapping(path="/admin/questions/")
+import java.util.Optional;
+
+@Controller
+@RequestMapping(path="/admin/questions")
 @CrossOrigin
 public class QuestionController {
     @Autowired
@@ -22,5 +21,30 @@ public class QuestionController {
     Iterable<QuestionEntity> getAllQuestions() {
         // This returns a JSON or XML with the questions
         return questionRepository.findAll();
+    }
+
+    @PostMapping(path="/edit")
+    public @ResponseBody
+    void editQuestion(@RequestBody QuestionEntity question) {
+            deleteQuestion(question);
+            questionRepository.save(question);
+    }
+
+    @PostMapping(path="/add")
+    public @ResponseBody
+    void addQuestion(@RequestBody QuestionEntity question) {
+        questionRepository.save(question);
+    }
+
+    @PostMapping(path="/delete")
+    public @ResponseBody
+    void deleteQuestion(@RequestBody QuestionEntity question) {
+        questionRepository.deleteById(question.getId());
+    }
+
+    @DeleteMapping(path="/delete/all")
+    public @ResponseBody
+    void deleteAll() {
+        questionRepository.deleteAll();
     }
 }

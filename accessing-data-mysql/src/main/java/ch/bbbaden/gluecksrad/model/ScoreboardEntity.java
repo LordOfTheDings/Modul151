@@ -1,6 +1,6 @@
 package ch.bbbaden.gluecksrad.model;
 
-import ch.bbbaden.gluecksrad.model.ScoreboardentryEntity;
+import ch.bbbaden.gluecksrad.model.ScoreboardEntryEntity;
 
 import javax.persistence.*;
 
@@ -12,13 +12,13 @@ public class ScoreboardEntity {
     private Integer Id;
 
     @ManyToOne
-    private ScoreboardentryEntity scoreboardEntrys;
+    private ScoreboardEntryEntity scoreboardEntrys;
 
-    public ScoreboardentryEntity getScoreboardEntrys() {
+    public ScoreboardEntryEntity getScoreboardEntries() {
         return scoreboardEntrys;
     }
 
-    public void setScoreboardEntrys(ScoreboardentryEntity scoreboardEntrys) {
+    public void setScoreboardEntries(ScoreboardEntryEntity scoreboardEntrys) {
         this.scoreboardEntrys = scoreboardEntrys;
     }
 

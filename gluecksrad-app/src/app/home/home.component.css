@@ -6,3 +6,12 @@ html{
   background-image: url("src/assets/Gluecksrad.png");
   background-size: 100%100%;
 }
+h1{
+  position:center;
+  box-shadow: cyan;
+  width:500px;
+  height: 100px;
+  margin-top:400px;
+  margin-left:30px;
+
+}

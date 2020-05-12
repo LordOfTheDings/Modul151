@@ -1,0 +1,34 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card">
+    <h4 class="card-header">Edit sentence</h4>
+    <div class="card-body">
+      <form [formGroup]="sentenceForm" (ngSubmit)="save()">
+        <div class="form-group">
+          <input placeholder="text" type="text" formControlName="text" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" />
+          <div *ngIf="submitted && f.text.errors" class="invalid-feedback">
+            <div *ngIf="f.text.errors.required">Sentence is required</div>
+            <div *ngIf="f.text.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}}</div>
+          </div>
+        </div>
+        <div class ="form-group">
+          <label for="category">
+            Category
+          </label>
+          <select id="category" name="category" class="form-control" formControlName="category">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{category.text}}
+            </option>
+          </select>
+          <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+            <div *ngIf="f.category.errors.required">Category is required</div>
+          </div>
+        </div>
+        <button  class="btn btn-success ">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </div>
+  </div>
+</div>

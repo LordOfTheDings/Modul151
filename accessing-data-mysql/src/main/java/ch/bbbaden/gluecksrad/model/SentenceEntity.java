@@ -1,19 +1,26 @@
 package ch.bbbaden.gluecksrad.model;
 
+import com.sun.istack.NotNull;
+
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 
 @Entity
 public class SentenceEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private Integer Id;
+    @NotNull
+    private Integer id;
+    @NotNull
     @Column(unique = true)
+    @Size(min=1,message = "sentence must have at least 1 character")
     private String sentence;
-    @ManyToOne
+    @NotNull
+    @ManyToOne()
     private CategoryEntity category;
 
     public Integer getId() {
-        return Id;
+        return id;
     }
 
     public String getSentence() {
@@ -25,7 +32,7 @@ public class SentenceEntity {
     }
 
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
 
     public void setSentence(String sentence) {

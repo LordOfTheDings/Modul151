@@ -1,24 +1,20 @@
-<div id="signup" class="container-fluid">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="signup">
-        <div class="row">
-          <label class="labelText" for="nickname">Please enter your nickname</label>
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card">
+    <h4 class="card-header">Play game</h4>
+    <div class="card-body">
+      <form [formGroup]="playForm" (ngSubmit)="signUp()">
+        <div class="form-group">
+          <input placeholder="nickname" type="text" formControlName="nickname" class="form-control" minlength="4" [ngClass]="{ 'is-invalid': submitted && f.nickname.errors }" />
+          <div *ngIf="submitted && f.nickname.errors" class="invalid-feedback">
+            <div *ngIf="f.nickname.errors.required">Nickname is required</div>
+            <div *ngIf="f.nickname.errors.minlength">Nickname has to contain at least 4 characters</div>
+            <div *ngIf="f.nickname.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}}</div>
+          </div>
         </div>
-        <div class="row">
-          <input type="text"
-                 id="nickname"
-                 name="nickname"
-                 placeholder="nickname"
-                 [(ngModel)]="model.name"/>
-        </div>
-        <div class="row">
-          <button style="animation-delay: 200ms" (click)="signup()">
-            <span>Submit</span>
-          </button>
-        </div>
-      </div>
+        <button  class="btn btn-success ">
+          Submit
+        </button>
+      </form>
     </div>
   </div>
 </div>
-

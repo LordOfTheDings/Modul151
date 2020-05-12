@@ -1,0 +1,51 @@
+<div class="col-md-6 offset-md-3 mt-5">
+  <div class="card">
+    <h4 class="card-header">Edit question</h4>
+    <div class="card-body">
+      <form [formGroup]="questionForm" (ngSubmit)="save()">
+        <div class="form-group">
+          <input placeholder="text" type="text" formControlName="text" class="form-control" minlength="10"
+
+                 [ngClass]="{ 'is-invalid': submitted && f.text.errors }" />
+          <div *ngIf="submitted && f.text.errors" class="invalid-feedback">
+            <div *ngIf="f.text.errors.required">Question is required</div>
+            <div *ngIf="f.text.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}} </div>
+            <div *ngIf="f.text.errors.minlength">Question must be at least 10 characters long!</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input placeholder="correct answer" type="text" formControlName="answerCorrect" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.answerCorrect.errors }" />
+          <div *ngIf="submitted && f.answerCorrect.errors" class="invalid-feedback">
+            <div *ngIf="f.answerCorrect.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}} </div>
+            <div *ngIf="f.answerCorrect.errors.required">Answer is required</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <input placeholder="incorrect answer" type="text" formControlName="answerIncorrect" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.answerIncorrect.errors }" />
+          <div *ngIf="submitted && f.answerIncorrect.errors" class="invalid-feedback">
+            <div *ngIf="f.answerIncorrect.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}}</div>
+            <div *ngIf="f.answerIncorrect.errors.required">Second Answer is required</div>
+          </div>
+        </div>
+        <div class ="form-group">
+          <label for="category">
+            Category
+          </label>
+          <select id="category" name="category" class="form-control" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+            <option *ngFor="let category of categories" [value]="category.id">
+              {{category.text}}
+            </option>
+          </select>
+          <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+            <div *ngIf="f.category.errors.required">Category is required</div>
+          </div>
+        </div>
+        <button  class="btn btn-success ">
+          <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+          Submit
+        </button>
+        <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,18 @@
+<div class="container center">
+<a *ngFor="let category of categories" class="list-group-item list-group-item-action row">
+  <i class="fa fa-list-ul"></i>&nbsp;
+  <span title="">CATEGORY:   {{category.text}}   </span>
+  <a title="delete" class="pull-right text-danger">
+    <i aria-placeholder="delete" (click)= "deleteCategory(category)"class="fa fa-trash-o"></i>
+  </a>
+  <span>   </span>
+  <a title="edit" class="pull-right text-info">
+    <i (click)= "editCategory(category)"class="fa fa-edit"></i>
+  </a>
+</a>
+<div class="row">
+  <button class="block btn btn-success pull-right" (click)="addNewCategory()">
+    <i class="fa fa-plus"> New category</i>
+  </button>
+</div>
+</div>

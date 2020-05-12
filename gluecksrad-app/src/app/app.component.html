@@ -1,14 +1,24 @@
-<router-outlet></router-outlet>
-<div class="container-fluid homebody">
-    <div class="row">
-      <div class="col-md-12 topNav">
-        <div>
-          <a class="active" href="home">Home</a>
-          <a href="game">Play Game</a>
-          <a href="login">Login as admin</a>
-          <a href="admin/questions">Questions</a>
-          <a href="game/scoreboard">Scoreboard</a>
-        </div>
-      </div>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12 topNav">
+        <a class="active" href="home">Home</a>
+        <a href="game">Play Game</a>
+        <a *ngIf="!currentUser" href="login">Login</a>
+          <div *ngIf="currentUser" class="dropdown">
+            <button class="dropbtn">Settings
+              <i class="fa fa-caret-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a ng href="admin/questions">Questions</a>
+              <a href="admin/sentences">Sentences</a>
+              <a href="admin/categories">Categories</a>
+            </div>
+          </div>
+        <a href="game/scoreboard">Scoreboard</a>
+        <a *ngIf="currentUser" href="home" class="nav-item nav-link" (click)="logout()">Logout</a>
     </div>
+  </div>
+  <div>
+    <router-outlet></router-outlet>
+  </div>
 </div>

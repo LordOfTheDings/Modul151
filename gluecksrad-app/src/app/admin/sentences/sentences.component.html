@@ -1,0 +1,22 @@
+<div class="container center">
+  <a *ngFor="let sentence of sentences" class="list-group-item list-group-item-action row">
+    <i class="fa fa-list-ul"></i>&nbsp;
+    <span>SENTENCE:    {{sentence.sentence}}    </span>
+    <span>CATEGORY:    {{sentence.category.text}}</span>
+    <a title="delete" class="pull-right text-danger">
+      <i aria-placeholder="delete" (click)= "deleteSentence(sentence)"class="fa fa-trash-o"></i>
+    </a>
+    <span>   </span>
+    <a title="edit" class="pull-right text-info">
+      <i (click)= "editSentence(sentence)"class="fa fa-edit"></i>
+    </a>
+  </a>
+  <div class="row">
+    <button class="block btn btn-success pull-right" (click)="addNewSentence()">
+      <i class="fa fa-plus">  New sentence</i>
+    </button>
+    <button *ngIf="sentences.length>0" class="block btn btn-danger pull-left" (click)="deleteAll()">
+      <i class="fa fa-remove">  Delete all</i>
+    </button>
+  </div>
+</div>
