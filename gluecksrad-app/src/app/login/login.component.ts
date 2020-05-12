@@ -4,6 +4,7 @@ import { Router} from "@angular/router";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {AuthenticationService} from "../shared/service/authentication.service";
 import {first} from "rxjs/operators";
+import {InputValidationService} from "../shared/service/validation/input-validation.service";
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,8 @@ export class LoginComponent implements OnInit {
   loading = false;
   submitted = false;
   error = '';
+  allowedCharacters = new InputValidationService().getAllowedCharacters();
+  validators = new InputValidationService().getValidators();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -24,8 +27,8 @@ export class LoginComponent implements OnInit {
   }
 ngOnInit(): void {
   this.loginForm = this.formBuilder.group({
-    username: ['', Validators.required],
-    password: ['', Validators.required]
+    username: ['', this.validators],
+    password: ['', this.validators]
   });
 }
   get f() { return this.loginForm.controls; }

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @Controller
 @RequestMapping(path="/admin/sentences")
 @CrossOrigin
@@ -23,20 +25,20 @@ public class SentenceController {
 
     @PostMapping(path="/edit")
     public @ResponseBody
-    void editQuestion(@RequestBody SentenceEntity sentence) {
+    void editQuestion(@Valid  @RequestBody SentenceEntity sentence) {
         deleteQuestion(sentence);
         sentenceRepository.save(sentence);
     }
 
     @PostMapping(path="/add")
     public @ResponseBody
-    void addQuestion(@RequestBody SentenceEntity sentence) {
+    void addQuestion(@Valid @RequestBody SentenceEntity sentence) {
         sentenceRepository.save(sentence);
     }
 
     @PostMapping(path="/delete")
     public @ResponseBody
-    void deleteQuestion(@RequestBody SentenceEntity sentence) {
+    void deleteQuestion(@Valid @RequestBody SentenceEntity sentence) {
         sentenceRepository.deleteById(sentence.getId());
     }
 

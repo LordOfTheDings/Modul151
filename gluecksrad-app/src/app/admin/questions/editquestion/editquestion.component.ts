@@ -48,7 +48,7 @@ export class EditquestionComponent implements OnInit {
         text: [this.hasCurrent?this.currentQuestion.text:'', this.validators],
         answerCorrect: [this.hasCurrent?this.currentQuestion.answerCorrect:'', this.validators],
         answerIncorrect: [this.hasCurrent?this.currentQuestion.answerIncorrect:'', this.validators],
-        category: [this.hasCurrent?this.currentQuestion.category.id:1, this.validators],
+        category: [this.hasCurrent?this.currentQuestion.category.id:null, this.validators],
       });
   }
 

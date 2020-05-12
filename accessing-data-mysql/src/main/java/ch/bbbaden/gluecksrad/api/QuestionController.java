@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.Optional;
 
 @Controller
@@ -25,20 +26,26 @@ public class QuestionController {
 
     @PostMapping(path="/edit")
     public @ResponseBody
-    void editQuestion(@RequestBody QuestionEntity question) {
+    void editQuestion(@Valid @RequestBody QuestionEntity question) {
             deleteQuestion(question);
             questionRepository.save(question);
     }
 
     @PostMapping(path="/add")
     public @ResponseBody
-    void addQuestion(@RequestBody QuestionEntity question) {
+    void addQuestion(@Valid @RequestBody QuestionEntity question) {
         questionRepository.save(question);
     }
 
+    /*@DeleteMapping(path="/delete")
+    public @ResponseBody
+    void deleteQuestion(@RequestParam String id ) {
+        questionRepository.deleteById(Integer.valueOf(id));
+    }*/
+
     @PostMapping(path="/delete")
     public @ResponseBody
-    void deleteQuestion(@RequestBody QuestionEntity question) {
+    void deleteQuestion(@Valid @RequestBody QuestionEntity question) {
         questionRepository.deleteById(question.getId());
     }
 

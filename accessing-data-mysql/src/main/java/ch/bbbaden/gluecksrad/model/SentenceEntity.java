@@ -11,12 +11,11 @@ public class SentenceEntity {
     @GeneratedValue(strategy=GenerationType.AUTO)
     @NotNull
     private Integer id;
-    @NotNull
     @Column(unique = true)
-    @Size(min=1,message = "sentence must have at least 1 character")
+    @Size(min=1,message = "sentence must have at least 1 character") @NotNull
     private String sentence;
     @NotNull
-    @ManyToOne()
+    @ManyToOne
     private CategoryEntity category;
 
     public Integer getId() {

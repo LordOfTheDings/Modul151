@@ -24,7 +24,7 @@ public class ScoreboardEntryController {
 
     @PostMapping(path="/delete")
     public @ResponseBody
-    void deleteEntry(@RequestBody ScoreboardEntryEntity entry){
+    void deleteEntry(@Valid @RequestBody ScoreboardEntryEntity entry){
         scoreboardRepository.deleteById(entry.getId());
     }
 

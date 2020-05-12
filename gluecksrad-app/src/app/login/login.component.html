@@ -7,12 +7,14 @@
           <input placeholder="username" type="text" formControlName="username" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.username.errors }" />
           <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
             <div *ngIf="f.username.errors.required">Username is required</div>
+            <div *ngIf="f.username.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}}</div>
           </div>
         </div>
         <div class="form-group">
           <input placeholder="password" type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
           <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
             <div *ngIf="f.password.errors.required">Password is required</div>
+            <div *ngIf="f.password.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}}</div>
           </div>
         </div>
         <button [disabled]="loading" class="btn btn-success">

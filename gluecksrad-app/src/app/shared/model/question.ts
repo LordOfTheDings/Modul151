@@ -4,7 +4,7 @@ export class Question {
   constructor() {
   }
 
-Id?: number;
+id?: number;
 text?: string;
 answerCorrect?: string;
 answerIncorrect?: string;

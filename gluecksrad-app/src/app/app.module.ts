@@ -41,7 +41,7 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
     HttpClientModule,
     RouterModule.forRoot([
       {
-        path: '*',
+        path: '',
         component: HomeComponent
       },
       {
