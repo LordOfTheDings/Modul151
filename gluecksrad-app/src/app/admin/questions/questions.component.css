@@ -3,10 +3,7 @@
   width:100%;
   display:block;
 }
-.center{
-margin-top:15%;
-  width:80%
-}
+
 .list-group-item{
   cursor:pointer;
 }

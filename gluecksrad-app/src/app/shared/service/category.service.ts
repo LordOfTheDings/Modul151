@@ -11,7 +11,7 @@ export class CategoryService {
   public currentCategory: Observable<Category>;
 
   constructor(private apiService: ApiService) {
-    this.currentCategorySubject = new BehaviorSubject<Category>(JSON.parse(localStorage.getItem('currentCategory')));
+    this.currentCategorySubject = new BehaviorSubject<Category>(JSON.parse(sessionStorage.getItem('currentCategory')));
     this.currentCategory = this.currentCategorySubject.asObservable();
   }
 
@@ -21,18 +21,19 @@ export class CategoryService {
 
   setCategory(category: Category){
     if(category != null) {
-      localStorage.setItem('currentCategory', JSON.stringify(category));
+      sessionStorage.setItem('currentCategory', JSON.stringify(category));
       this.currentCategorySubject.next(category);
     }
   }
 
   resetCategory(){
-    localStorage.removeItem('currentCategory');
+    sessionStorage.removeItem('currentCategory');
     this.currentCategorySubject.next(null);
   }
 
   save(category:Category,hasCurrent:boolean):Observable<Category>{
   if(hasCurrent){
+    this.resetCategory();
     return this.apiService.editCategory(category);
   }
     return this.apiService.addCategory(category);

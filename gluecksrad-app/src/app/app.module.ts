@@ -16,7 +16,7 @@ import {BasicAuthInterceptor} from "./shared/interceptor/basic-auth.interceptor"
 import {ErrorInterceptor} from "./shared/interceptor/error.interceptor";
 import { EditquestionComponent } from './admin/questions/editquestion/editquestion.component';
 import { CategoriesComponent } from './admin/categories/categories.component';
-import { EditcategoryComponent } from './admin/categories/editcategory/editcategory.component';
+import { EditCategoryComponent } from './admin/categories/editcategory/edit-category.component';
 import { SentencesComponent } from './admin/sentences/sentences.component';
 import { EditsentenceComponent } from './admin/sentences/editsentence/editsentence.component';
 @NgModule({
@@ -30,7 +30,7 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
     ScoreboardComponent,
     EditquestionComponent,
     CategoriesComponent,
-    EditcategoryComponent,
+    EditCategoryComponent,
     SentencesComponent,
     EditsentenceComponent,
   ],
@@ -66,7 +66,7 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
       },
       {
         path: 'admin/categories/edit',
-        component: EditcategoryComponent
+        component: EditCategoryComponent
       },
       {
         path: 'admin/sentences',
@@ -95,6 +95,6 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
   bootstrap: [AppComponent,HomeComponent,LoginComponent,GameComponent,QuestionsComponent,EditsentenceComponent,EditquestionComponent,
-  EditcategoryComponent,ScoreboardComponent,CategoriesComponent,SentencesComponent]
+  EditCategoryComponent,ScoreboardComponent,CategoriesComponent,SentencesComponent]
 })
 export class AppModule { }

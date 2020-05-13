@@ -11,24 +11,25 @@ export class SentenceService {
   public currentSentence: Observable<Sentence>;
 
   constructor(private apiService: ApiService) {
-    this.currentSentenceSubject = new BehaviorSubject<Sentence>(JSON.parse(localStorage.getItem('currentSentence')));
+    this.currentSentenceSubject = new BehaviorSubject<Sentence>(JSON.parse(sessionStorage.getItem('currentSentence')));
     this.currentSentence = this.currentSentenceSubject.asObservable();
   }
 
   setSentence(sentence: Sentence) {
     if(sentence!=null) {
-      localStorage.setItem('currentSentence', JSON.stringify(sentence));
+      sessionStorage.setItem('currentSentence', JSON.stringify(sentence));
       this.currentSentenceSubject.next(sentence);
     }
   }
 
   resetSentence() {
-    localStorage.removeItem('currentSentence');
+    sessionStorage.removeItem('currentSentence');
     this.currentSentenceSubject.next(null);
   }
 
   save(sentence: Sentence, hasCurrent: boolean): Observable<Sentence> {
     if (hasCurrent) {
+      this.resetSentence();
       return this.apiService.editSentence(sentence);
     }
     return this.apiService.addSentence(sentence);

@@ -2,10 +2,14 @@ package ch.bbbaden.gluecksrad.db;
 
 import ch.bbbaden.gluecksrad.model.CategoryEntity;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.Repository;
 
 import java.util.Optional;
 
 public interface CategoryEntityRepository extends CrudRepository<CategoryEntity, Integer> {
+
+    <S extends CategoryEntity> S removeById(Integer s);
+
     @Override
     <S extends CategoryEntity> S save(S s);
 

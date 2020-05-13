@@ -17,8 +17,13 @@ export class AppComponent {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
+  isActive(path:string):boolean{
+    if(this.router.url==path){
+      return true;
+    }
+    return false;
+  }
   logout() {
     this.authenticationService.logout();
-    this.router.navigateByUrl("login");
   }
 }

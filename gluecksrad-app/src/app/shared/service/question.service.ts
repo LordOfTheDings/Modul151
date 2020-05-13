@@ -14,24 +14,25 @@ export class QuestionService {
   public currentQuestion: Observable<Question>;
 
   constructor(private apiService: ApiService) {
-    this.currentQuestionSubject = new BehaviorSubject<Question>(JSON.parse(localStorage.getItem('currentQuestion')));
+    this.currentQuestionSubject = new BehaviorSubject<Question>(JSON.parse(sessionStorage.getItem('currentQuestion')));
     this.currentQuestion = this.currentQuestionSubject.asObservable();
   }
 
   setQuestion(question: Question){
     if(question != null) {
-      localStorage.setItem('currentQuestion', JSON.stringify(question));
+      sessionStorage.setItem('currentQuestion', JSON.stringify(question));
       this.currentQuestionSubject.next(question);
     }
   }
 
   resetQuestion(){
-  localStorage.removeItem('currentQuestion');
+    sessionStorage.removeItem('currentQuestion');
   this.currentQuestionSubject.next(null);
   }
 
   save(question:Question,hasCurrent:boolean):Observable<Question>{
     if(hasCurrent){
+      this.resetQuestion();
       return this.apiService.editQuestion(question);
     }
     return this.apiService.addQuestion(question);

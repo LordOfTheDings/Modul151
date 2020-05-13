@@ -8,10 +8,10 @@ import {InputValidationService} from "../../../shared/service/validation/input-v
 
 @Component({
   selector: 'app-editcategory',
-  templateUrl: './editcategory.component.html',
-  styleUrls: ['./editcategory.component.css']
+  templateUrl: './edit-category.component.html',
+  styleUrls: ['./edit-category.component.css']
 })
-export class EditcategoryComponent implements OnInit {
+export class EditCategoryComponent implements OnInit {
   currentCategory:Category;
   hasCurrent = false;
   categoryForm: FormGroup;
@@ -49,11 +49,13 @@ export class EditcategoryComponent implements OnInit {
     category.text = this.f.text.value;
     return category;
   }
+
   save(){
     this.submitted = true;
     if (this.categoryForm.invalid) {
       return;
     }
+
     this.loading = true;
     this.categoryService.save(this.getCategory(),this.hasCurrent).subscribe(
       res=>{

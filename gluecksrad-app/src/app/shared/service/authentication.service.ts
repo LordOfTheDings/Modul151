@@ -14,7 +14,7 @@ export class AuthenticationService {
    public currentUser: Observable<User>;
 
   constructor( private apiService: ApiService, private router:Router ) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(sessionStorage.getItem('currentUser')));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
@@ -26,14 +26,15 @@ export class AuthenticationService {
     return this.apiService.logIn({ userName, password})
       .pipe(map(user=>{
         user.authData = window.btoa(userName +':' + password);
-        localStorage.setItem('currentUser',JSON.stringify(user));
+        sessionStorage.setItem('currentUser',JSON.stringify(user));
         this.currentUserSubject.next(user);
+        alert(user.authData);
       }));
   }
 
   logout(){
-    localStorage.removeItem('currentUser');
-    this.router.navigateByUrl("login");
+    sessionStorage.removeItem('currentUser');
     this.currentUserSubject.next(null);
+    this.router.navigateByUrl('login');
   }
 }

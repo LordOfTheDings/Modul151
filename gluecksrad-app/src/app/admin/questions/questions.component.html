@@ -1,15 +1,5 @@
-<div class="container center">
-  <!-- Note menu -->
-  <div class="row" style="margin-top:12px;">
-    <div class="col-md-8">
-      <!--input type="text"
-             class="form-control"
-             style="width: 100%;"
-             placeholder="Search questions...">-->
-    </div>
-  </div>
-
-<a *ngFor="let question of questions" class="list-group-item list-group-item-action row">
+<div class="container center list-group-horizontal-md">
+<a *ngFor="let question of questions" class="list-group-item list-group-item-light row">
   <i class="fa fa-list-ul"></i>&nbsp;
   <span title="">QUESTION:   {{question.text}}   </span>
   <span title="">CATEGORY:   {{question.category.text}}</span>

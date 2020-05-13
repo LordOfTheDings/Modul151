@@ -42,3 +42,11 @@ button {
   background-color: #4CAF50;
   color: white;
 }
+.card{
+  margin-top:200px;
+  background-color: #bde9c7;
+}
+.center{
+  margin-top:15%;
+  width:85%
+}

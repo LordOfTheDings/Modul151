@@ -15,7 +15,7 @@ sentences:Sentence[];
   constructor(private sentenceService:SentenceService,
               private router:Router,
               guard: AuthGuard,
-              route: ActivatedRoute) {
+              route: ActivatedRoute,) {
     guard.canActivate(route.snapshot, router.routerState.snapshot);
   }
 

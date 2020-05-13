@@ -45,7 +45,7 @@ ngOnInit(): void {
       .pipe(first())
       .subscribe(
         data => {
-          this.router.navigateByUrl("home");
+          this.router.navigateByUrl('home');
         },
         error => {
           this.error = error;

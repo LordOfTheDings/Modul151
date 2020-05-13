@@ -28,8 +28,8 @@
 }
 
 .dropdown-content a.active {
-   background-color: inherit;
-   color: #64c3c6;
+  background-color: #4CAF50;
+  color: white;
  }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
