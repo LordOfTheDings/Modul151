@@ -26,7 +26,6 @@ public class SentenceController {
     @PostMapping(path="/edit")
     public @ResponseBody
     void editQuestion(@Valid  @RequestBody SentenceEntity sentence) {
-        deleteQuestion(sentence);
         sentenceRepository.save(sentence);
     }
 

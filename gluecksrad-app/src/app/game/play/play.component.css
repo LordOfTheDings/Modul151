@@ -1,0 +1,31 @@
+.playground{
+  margin-top:80px;
+}
+.playground .column{
+  border: #0a0a0a dotted medium;
+  width:100%;
+  height:100%;
+}
+.playground .column .playbuttons{
+  margin-top: 50px;
+  width:100%;
+}
+
+.btn-success{
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 14px 28px;
+  font-size: 16px;
+  width:100%;
+}
+.btn-danger{
+  border-radius: 30px;
+  border: 2px solid black;
+  padding: 14px 28px;
+  font-size: 16px;
+  width:100%;
+}
+
+.btn-danger :disabled{
+  color:grey;
+}

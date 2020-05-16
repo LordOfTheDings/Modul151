@@ -36,7 +36,6 @@ public class CategoryController {
     @PostMapping(path="/edit")
     public @ResponseBody
     void editCategory(@Valid @RequestBody CategoryEntity category){
-        categoryEntityRepository.deleteById(category.getId());
         categoryEntityRepository.save(category);
        }
     }

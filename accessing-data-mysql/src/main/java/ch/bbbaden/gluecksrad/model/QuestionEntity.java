@@ -1,8 +1,8 @@
 package ch.bbbaden.gluecksrad.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -16,9 +16,11 @@ public class QuestionEntity {
     private String text;
     @NotNull
     @Size(min=1,message="answer must have at least 1 character")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$",message = "Forbidden characters used!")
     private String answerCorrect;
     @NotNull
     @Size(min=1,message="answer must have at least 1 character")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$",message = "Forbidden characters used!")
     private String answerIncorrect;
     @NotNull
     @ManyToOne
@@ -43,7 +45,6 @@ public class QuestionEntity {
     public CategoryEntity getCategory() {
         return category;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }

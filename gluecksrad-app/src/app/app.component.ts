@@ -17,12 +17,14 @@ export class AppComponent {
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }
-  isActive(path:string):boolean{
-    if(this.router.url==path){
-      return true;
-    }
-    return false;
+  isActive(path:string):boolean {
+    return this.router.url == path;
   }
+
+  isPartOfPath(path:string):boolean{
+    return this.router.url.includes(path);
+  }
+
   logout() {
     this.authenticationService.logout();
   }

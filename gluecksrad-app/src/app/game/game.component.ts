@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {InputValidationService} from "../shared/service/validation/input-validation.service";
 import {FormBuilder, FormGroup} from "@angular/forms";
+import {GameService} from "../shared/service/game.service";
+import {Player} from "../shared/model/player";
 
 @Component({
   selector: 'app-game',
@@ -12,15 +14,13 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class GameComponent implements OnInit {
     validators= new InputValidationService().getValidators();
     allowedCharacters = new InputValidationService().getAllowedCharacters();
-    model:UserViewModel = {
-    name:'',
-    score:0
-};
+    model:UserViewModel;
   playForm: FormGroup;
   submitted: boolean;
   constructor(private http:HttpClient,
               private router: Router,
-              private formBuilder:FormBuilder) { }
+              private formBuilder:FormBuilder,
+              private gameService:GameService) { }
 
   ngOnInit(): void {
     this.playForm = this.formBuilder.group({
@@ -36,7 +36,9 @@ export class GameComponent implements OnInit {
     if(this.playForm.invalid){
       return;
     }
+
     this.submitted= true;
+    this.gameService.setPlayer(new Player(this.f.nickname.value));
     this.router.navigateByUrl('/game/play')
   }
 }

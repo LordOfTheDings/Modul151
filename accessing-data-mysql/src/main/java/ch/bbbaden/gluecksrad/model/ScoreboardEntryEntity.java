@@ -1,12 +1,11 @@
 package ch.bbbaden.gluecksrad.model;
 
-import com.sun.istack.NotNull;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import java.sql.Date;
-import java.time.ZonedDateTime;
 
 @Entity
 public class ScoreboardEntryEntity {
@@ -15,7 +14,7 @@ public class ScoreboardEntryEntity {
     @NotNull
     private Integer id;
     @NotNull
-    @Column(unique = true)
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$")
     private String playerName;
     @DateTimeFormat(pattern="yyyy-mm-dd")
     @NotNull

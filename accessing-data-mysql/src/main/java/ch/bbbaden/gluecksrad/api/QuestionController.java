@@ -27,7 +27,6 @@ public class QuestionController {
     @PostMapping(path="/edit")
     public @ResponseBody
     void editQuestion(@Valid @RequestBody QuestionEntity question) {
-            deleteQuestion(question);
             questionRepository.save(question);
     }
 
@@ -36,12 +35,6 @@ public class QuestionController {
     void addQuestion(@Valid @RequestBody QuestionEntity question) {
         questionRepository.save(question);
     }
-
-    /*@DeleteMapping(path="/delete")
-    public @ResponseBody
-    void deleteQuestion(@RequestParam String id ) {
-        questionRepository.deleteById(Integer.valueOf(id));
-    }*/
 
     @PostMapping(path="/delete")
     public @ResponseBody

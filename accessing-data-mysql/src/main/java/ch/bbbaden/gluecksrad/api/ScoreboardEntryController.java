@@ -30,7 +30,7 @@ public class ScoreboardEntryController {
 
     @PostMapping(path="/add")
     public @ResponseBody
-    void addEntry(ScoreboardEntryEntity entry){
+    void addEntry(@Valid @RequestBody ScoreboardEntryEntity entry){
         scoreboardRepository.save(entry);
     }
 }

@@ -76,7 +76,6 @@ export class EditsentenceComponent implements OnInit {
   save(){
     this.submitted = true;
     if (this.sentenceForm.invalid) {
-      alert("§4");
       return;
     }
     this.loading = true;
@@ -86,7 +85,7 @@ export class EditsentenceComponent implements OnInit {
       },
       err=>{
         alert("An error has occured while trying to edit sentence!");
-        this.error = err;
+        this.error = "Invalid server response. Check your input!";
         this.loading = false;
       }
     )

@@ -1,8 +1,8 @@
 package ch.bbbaden.gluecksrad.model;
 
-import com.sun.istack.NotNull;
-
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -12,7 +12,9 @@ public class SentenceEntity {
     @NotNull
     private Integer id;
     @Column(unique = true)
-    @Size(min=1,message = "sentence must have at least 1 character") @NotNull
+    @Size(min=1,message = "sentence must have at least 1 character")
+    @NotNull
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$")
     private String sentence;
     @NotNull
     @ManyToOne

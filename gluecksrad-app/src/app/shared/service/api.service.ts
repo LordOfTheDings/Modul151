@@ -12,7 +12,6 @@ import {ScoreboardEntry} from "../model/scoreboardEntry";
 })
 export class ApiService {
   private BASE_URL="http://localhost:8080";
-  private ALL_USERS_URL = `${this.BASE_URL}\\admin\\users\\all`;
   private ALL_QUESTIONS_URL = `${this.BASE_URL}\\admin\\questions\\all`;
   private ALL_CATEGORIES_URL = `${this.BASE_URL}\\admin\\categories\\all`;
   private ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\all`;
@@ -30,33 +29,25 @@ export class ApiService {
   private DELETE_ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\delete\\all`;
   private SCOREBOARD_URL = `${this.BASE_URL}\\game\\scoreboard\\all`;
   private DELETE_SCOREBOARD_ENTRY_URL = `${this.BASE_URL}\\game\\scoreboard\\delete`;
-  private ADD_SCOREBOARD_ENTRY_URL = `${this.BASE_URL}\\game\\scoreboard\\add`;
+
   constructor(private http:HttpClient) {
 
   }
 
   getAllQuestions() : Observable<Question[]>{
     return this.http.get<Question[]>(this.ALL_QUESTIONS_URL);
-}
-
-  getAllUsers(): Observable<User[]>{
-    return this.http.get<User[]>(this.ALL_USERS_URL);
   }
 
   getAllCategories(): Observable<Category[]> {
     return this.http.get<Category[]>(this.ALL_CATEGORIES_URL);
   }
 
-  getAllSentences(): Observable<Category[]>  {
-    return this.http.get<Category[]>(this.ALL_SENTENCES_URL);
+  getAllSentences(): Observable<Sentence[]>  {
+    return this.http.get<Sentence[]>(this.ALL_SENTENCES_URL);
   }
 
   getAllScoreboardEntries():Observable<ScoreboardEntry[]>{
     return this.http.get<ScoreboardEntry[]>(this.SCOREBOARD_URL);
-  }
-
-  addScoreBoardEntry(entry:ScoreboardEntry):Observable<ScoreboardEntry>{
-    return this.http.post<ScoreboardEntry>(this.ADD_SCOREBOARD_ENTRY_URL,entry);
   }
 
   logIn(user:User): Observable<User> {

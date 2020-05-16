@@ -1,8 +1,10 @@
 package ch.bbbaden.gluecksrad.model;
-import com.sun.istack.NotNull;
+
 import com.sun.istack.Nullable;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 @Entity
@@ -15,9 +17,11 @@ public class UserEntity {
     @Column(unique = true)
     @NotNull
     @Size(min=1,message="userName must have at least 1 character")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!@]*$")
     private String userName;
     @NotNull
     @Size(min=1,max=15,message = "password must have between 1 and 15 characters")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!@]*$")
     private String password;
     @Nullable
     private String authData;

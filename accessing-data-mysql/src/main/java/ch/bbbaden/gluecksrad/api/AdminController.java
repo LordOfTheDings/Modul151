@@ -16,7 +16,6 @@ import java.util.UUID;
 public class AdminController {
     @Autowired
     private UserEntityRepository userRepository;
-    private boolean loggedIn;
 
     @PostMapping(path = "/login")
     public @ResponseBody
@@ -24,7 +23,6 @@ public class AdminController {
         Iterable<UserEntity> users = this.getAllUsers();
         for (UserEntity currentUser : users) {
             if(user.getUserName().equals(currentUser.getUserName())&&user.getPassword().equals(currentUser.getPassword())){
-                loggedIn = true;
                 return user;
             }
         }

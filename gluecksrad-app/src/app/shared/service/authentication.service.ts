@@ -28,7 +28,6 @@ export class AuthenticationService {
         user.authData = window.btoa(userName +':' + password);
         sessionStorage.setItem('currentUser',JSON.stringify(user));
         this.currentUserSubject.next(user);
-        alert(user.authData);
       }));
   }
 
