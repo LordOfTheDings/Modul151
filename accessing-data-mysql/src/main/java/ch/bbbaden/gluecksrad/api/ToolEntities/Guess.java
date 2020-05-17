@@ -10,6 +10,11 @@ public class Guess {
     @NotNull
     Integer scoreAtStake;
 
+    public Guess(String text, Integer scoreAtStake) {
+        this.text = text;
+        this.scoreAtStake = scoreAtStake;
+    }
+
     public String getText() {
         return text;
     }

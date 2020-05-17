@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {SentenceService} from "../../shared/service/sentence.service";
 import {Sentence} from "../../shared/model/sentence";
-import {Category} from "../../shared/model/category";
 import {AuthGuard} from "../../shared/guard/auth.guard";
 
 @Component({

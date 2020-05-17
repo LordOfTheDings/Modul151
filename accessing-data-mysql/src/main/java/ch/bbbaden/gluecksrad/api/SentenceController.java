@@ -2,7 +2,6 @@ package ch.bbbaden.gluecksrad.api;
 
 import ch.bbbaden.gluecksrad.db.SentenceEntityRepository;
 import ch.bbbaden.gluecksrad.model.SentenceEntity;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +18,6 @@ public class SentenceController {
     @GetMapping(path="/all")
     public @ResponseBody
     Iterable<SentenceEntity> getAllQuestions() {
-        // This returns a JSON or XML with the sentences
         return sentenceRepository.findAll();
     }
 

@@ -21,13 +21,14 @@ export class QuestionsComponent implements OnInit {
   ngOnInit(): void {
     this.getQuestions();
   }
+
   public getQuestions(){
-  this.questionService.getAllQuestions().subscribe(
+    this.questionService.getAllQuestions().subscribe(
   res=>{
-    this.questions = res;
+      this.questions = res;
   },
   err=>{
-    alert("An error has occured while trying to get questions!")
+      alert("An error has occured while trying to get questions!")
   }
   );
 }

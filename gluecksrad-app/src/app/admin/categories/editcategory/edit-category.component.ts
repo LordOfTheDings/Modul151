@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {CategoryService} from "../../../shared/service/category.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {Category} from "../../../shared/model/category";
 import {AuthGuard} from "../../../shared/guard/auth.guard";
 import {InputValidationService} from "../../../shared/service/validation/input-validation.service";

@@ -1,10 +1,8 @@
 import { Injectable } from '@angular/core';
 import {Question} from "../model/question";
 import {BehaviorSubject, Observable} from "rxjs";
-import {User} from "../model/user";
 import {ApiService} from "./api.service";
-import {map} from "rxjs/operators";
-import {Category} from "../model/category";
+
 
 @Injectable({
   providedIn: 'root'

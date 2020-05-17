@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {QuestionService} from "../../../shared/service/question.service";
 import {Question} from "../../../shared/model/question";
 import {ActivatedRoute, Router} from "@angular/router";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {FormBuilder, FormGroup} from "@angular/forms";
 import {Category} from "../../../shared/model/category";
 import {CategoryService} from "../../../shared/service/category.service";
 import {AuthGuard} from "../../../shared/guard/auth.guard";

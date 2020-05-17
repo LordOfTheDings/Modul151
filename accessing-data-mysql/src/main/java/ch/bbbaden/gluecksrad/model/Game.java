@@ -13,19 +13,21 @@ public class Game {
     private List<QuestionEntity> questions = new ArrayList<>();
     private List<SentenceEntity> sentences = new ArrayList<>();
     private String sentenceToGuess = "";
-    private String hiddenCharacters;
-    private String guessedCharacters = "";
-    private Gamestate gamestate = new Gamestate();
+    private Gamestate gamestate;
     Random randomGenerator = new Random();
 
-    public Game(String hiddenCharacters) {
-        this.hiddenCharacters = hiddenCharacters;
+    public Game() {
+        gamestate = new Gamestate();
     }
 
-    public Gamestate startGame(Iterator<QuestionEntity> questionEntityIterator, Iterator<SentenceEntity> sentenceEntityIterator){
+    public Gamestate getGamestate() {
+        return gamestate;
+    }
+
+    public Gamestate startGame(Iterator<QuestionEntity> questionEntityIterator, Iterator<SentenceEntity> sentenceEntityIterator, String hiddenCharacters){
         questionEntityIterator.forEachRemaining(this.questions::add);
         sentenceEntityIterator.forEachRemaining(this.sentences::add);
-        return setSentence();
+        return setSentence(hiddenCharacters);
     }
 
     public Gamestate turnWheel(double random){
@@ -40,9 +42,9 @@ public class Game {
         return gamestate;
     }
 
-    private Gamestate setSentence(){
+    private Gamestate setSentence(String hiddenCharacters){
         SentenceEntity sentence = setRandomSentence();
-        hideCharacters(sentence);
+        hideCharacters(sentence, hiddenCharacters);
         gamestate.currentSentence=sentence;
         gamestate.category=sentence.getCategory();
         return gamestate;
@@ -52,6 +54,7 @@ public class Game {
         if(!checkForGuessedSentence(sentenceToGuess,guess)){
             --gamestate.lives;
         }
+        gamestate.isWon = true;
         return gamestate;
     }
 
@@ -59,7 +62,7 @@ public class Game {
         return current.equals(other);
     }
 
-    private void hideCharacters(SentenceEntity sentence) {
+    private void hideCharacters(SentenceEntity sentence, String hiddenCharacters) {
         String text = sentence.getSentence();
         for(char character : hiddenCharacters.toCharArray()){
             text =  text.replace(character, '*');
@@ -83,10 +86,9 @@ public class Game {
     }
 
     public Gamestate guessCharacter(Guess guess){
-        if(guessedCharacters.contains(guess.getText())){
+        if(gamestate.currentSentence.getSentence().contains(guess.getText())){
             return gamestate;
         }
-        guessedCharacters += guess.getText();
         this.gamestate.currentSentence.setSentence(updateSentence(guess.getText()));
         evaluateCharacterGuess(guess);
         gamestate.isWon = checkForGuessedSentence(this.gamestate.currentSentence.getSentence(),sentenceToGuess);

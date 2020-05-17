@@ -31,7 +31,6 @@ export class ApiService {
   private DELETE_SCOREBOARD_ENTRY_URL = `${this.BASE_URL}\\game\\scoreboard\\delete`;
 
   constructor(private http:HttpClient) {
-
   }
 
   getAllQuestions() : Observable<Question[]>{

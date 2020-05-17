@@ -16,7 +16,6 @@ import {InputValidationService} from "../../../shared/service/validation/input-v
 export class EditsentenceComponent implements OnInit {
   currentSentence:Sentence;
   categories: Category[];
-
   hasCurrent = false;
   sentenceForm: FormGroup;
   submitted = false;

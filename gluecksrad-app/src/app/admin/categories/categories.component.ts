@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {Category} from "../../shared/model/category";
 import {CategoryService} from "../../shared/service/category.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {Observable} from "rxjs";
-import {AuthenticationService} from "../../shared/service/authentication.service";
 import {AuthGuard} from "../../shared/guard/auth.guard";
 
 @Component({
@@ -20,6 +18,7 @@ export class CategoriesComponent implements OnInit {
                 route:ActivatedRoute) {
     guard.canActivate(route.snapshot, router.routerState.snapshot);
   }
+
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe(
       res=>{

@@ -3,7 +3,6 @@ package ch.bbbaden.gluecksrad.api;
 import ch.bbbaden.gluecksrad.db.ScoreboardEntryEntityRepository;
 import ch.bbbaden.gluecksrad.model.ScoreboardEntryEntity;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
