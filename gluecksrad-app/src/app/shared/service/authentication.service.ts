@@ -23,7 +23,7 @@ export class AuthenticationService {
   }
 
   login(userName: string, password:string){
-    return this.apiService.logIn({ userName, password})
+    return this.apiService.logIn({userName, password})
       .pipe(map(user=>{
         user.authData = window.btoa(userName +':' + password);
         sessionStorage.setItem('currentUser',JSON.stringify(user));

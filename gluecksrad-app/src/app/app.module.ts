@@ -19,6 +19,22 @@ import { CategoriesComponent } from './admin/categories/categories.component';
 import { EditCategoryComponent } from './admin/categories/editcategory/edit-category.component';
 import { SentencesComponent } from './admin/sentences/sentences.component';
 import { EditsentenceComponent } from './admin/sentences/editsentence/editsentence.component';
+import {MAT_DIALOG_DEFAULT_OPTIONS, MatDialog, MatDialogModule, MatDialogRef} from "@angular/material/dialog";
+import {MatSliderModule} from "@angular/material/slider";
+import { ConsonantInputDialog } from './game/play/dialog/consonant-input-dialog.component';
+import { QuestionDialogComponent} from "./game/play/dialog/question-dialog.component";
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import { VocalInputDialogComponent } from './game/play/dialog/vocal-input-dialog.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {MatButtonModule} from "@angular/material/button";
+import {MatInputModule} from "@angular/material/input";
+import { registerLocaleData } from '@angular/common';
+import localeFr from '@angular/common/locales/fr';
+
+registerLocaleData(localeFr,'de');
+const material = [
+  MatDialogModule,
+];
 @NgModule({
   declarations: [
     AppComponent,
@@ -33,11 +49,17 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
     EditCategoryComponent,
     SentencesComponent,
     EditsentenceComponent,
+    ConsonantInputDialog,
+    VocalInputDialogComponent,
+    QuestionDialogComponent
   ],
   imports: [
+    BrowserAnimationsModule,
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatDialogModule,
+    MatSliderModule,
     HttpClientModule,
     RouterModule.forRoot([
       {
@@ -89,12 +111,18 @@ import { EditsentenceComponent } from './admin/sentences/editsentence/editsenten
         component: GameComponent
       },
     ]),
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatFormFieldModule,
+    MatButtonModule,
+    MatInputModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthInterceptor, multi: true },
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },],
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}],
+
   bootstrap: [AppComponent,HomeComponent,LoginComponent,GameComponent,QuestionsComponent,EditsentenceComponent,EditquestionComponent,
-  EditCategoryComponent,ScoreboardComponent,CategoriesComponent,SentencesComponent]
+  EditCategoryComponent,ScoreboardComponent,CategoriesComponent,SentencesComponent,ConsonantInputDialog,QuestionDialogComponent],
+  entryComponents: [ConsonantInputDialog,QuestionDialogComponent]
 })
 export class AppModule { }

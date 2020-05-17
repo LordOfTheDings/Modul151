@@ -1,0 +1,19 @@
+<h1 mat-dialog-title>Question</h1>
+<div mat-dialog-content>
+  <mat-label>Your amount at risk:  </mat-label>
+  <input type="number" pattern="[0-9]{10}" matInput [(ngModel)]="amount"
+  oninvalid="this.setCustomValidity('Only numbers allowed!')">
+  <br/>
+  <button mat-raised-button (click)="setAmount(amount)">Submit</button>
+  <div *ngIf="showQuestion">
+  <mat-label>Choose the correct answer:</mat-label>
+  <br/>
+  <hr/>
+  <mat-label>{{question.text}}</mat-label>
+<br/>
+  <hr/>
+  <button mat-raised-button (click)="OnAnswerOne()">{{question.answerCorrect}}</button>
+  <hr/>
+  <button mat-raised-button (click)="OnAnswerTwo()">{{question.answerIncorrect}}</button>
+</div>
+</div>

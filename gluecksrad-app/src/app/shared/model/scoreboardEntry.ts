@@ -1,5 +1,5 @@
 export class ScoreboardEntry {
-  constructor(playerName: string, score: number, date?: Date, roundsPlayed?: number) {
+  constructor(playerName: string, score: number, roundsPlayed: number,date: string) {
     this.playerName = playerName;
     this.score = score;
     this.date = date;
@@ -9,6 +9,6 @@ export class ScoreboardEntry {
   id?: number;
   playerName?: string;
   score?: number;
-  date?: Date;
+  date?: string;
   roundsPlayed?: number;
 }

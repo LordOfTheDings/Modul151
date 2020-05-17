@@ -1,10 +1,10 @@
 export class Guess {
 
-  constructor(character: string, scoreAtStake: number) {
-    this.character = character;
+  constructor(text: string, scoreAtStake: number) {
+    this.text = text;
     this.scoreAtStake = scoreAtStake;
   }
 
-  character?: string;
+  text?: string;
   scoreAtStake?: number;
 }

@@ -1,4 +1,4 @@
-package ch.bbbaden.gluecksrad.api.viewmodel;
+package ch.bbbaden.gluecksrad.api.ToolEntities;
 
 import ch.bbbaden.gluecksrad.model.CategoryEntity;
 import ch.bbbaden.gluecksrad.model.QuestionEntity;
@@ -8,7 +8,7 @@ public class Gamestate {
 
     public int score = 0;
     public int lives = 3;
-    public int roundsPlayed = 1;
+    public int roundsPlayed = 0;
     public boolean isWon = false;
     public boolean nothingLeftToGuess = false;
     public PlayMode currentMode;

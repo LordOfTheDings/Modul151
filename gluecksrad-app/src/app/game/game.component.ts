@@ -14,7 +14,6 @@ import {Player} from "../shared/model/player";
 export class GameComponent implements OnInit {
     validators= new InputValidationService().getValidators();
     allowedCharacters = new InputValidationService().getAllowedCharacters();
-    model:UserViewModel;
   playForm: FormGroup;
   submitted: boolean;
   constructor(private http:HttpClient,
@@ -31,6 +30,7 @@ export class GameComponent implements OnInit {
   get f(){
     return this.playForm.controls;
   }
+
   signUp():void{
     this.submitted = true;
     if(this.playForm.invalid){
@@ -41,9 +41,4 @@ export class GameComponent implements OnInit {
     this.gameService.setPlayer(new Player(this.f.nickname.value));
     this.router.navigateByUrl('/game/play')
   }
-}
-
-export interface UserViewModel{
-  name:string;
-  score:number;
 }

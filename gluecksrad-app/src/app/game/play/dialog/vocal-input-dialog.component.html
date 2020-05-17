@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Enter a vocal</h1>
+<div mat-dialog-content>
+  <div class="card">
+    <div class="card-body">
+      <form [formGroup]="vocalForm" (ngSubmit)="submit()">
+        <div class="form-group">
+          <input placeholder="vocal" type="text" formControlName="vocal" class="form-control" [ngClass]="{'is-invalid':f.vocal.value.length >0 && f.vocal.errors}" />
+          <div *ngIf=" f.vocal.errors" class="invalid-feedback">
+            <div *ngIf="f.vocal.errors.required">consonant is required</div>
+            <div *ngIf="f.vocal.errors.pattern">Contains forbidden characters! Only use vocals!</div>
+            <div *ngIf="f.vocal.errors.maxlength">Only one character allowed!</div>
+          </div>
+        </div>
+        <button class="btn btn-success ">
+          Submit
+        </button>
+      </form>
+    </div>
+  </div>
+</div>

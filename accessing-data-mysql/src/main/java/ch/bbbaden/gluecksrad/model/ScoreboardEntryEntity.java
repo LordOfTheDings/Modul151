@@ -3,7 +3,7 @@ package ch.bbbaden.gluecksrad.model;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import com.sun.istack.NotNull;
 import javax.validation.constraints.Pattern;
 import java.sql.Date;
 
@@ -16,16 +16,15 @@ public class ScoreboardEntryEntity {
     @NotNull
     @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$")
     private String playerName;
-    @DateTimeFormat(pattern="yyyy-mm-dd")
     @NotNull
-    private Date date;
+    private String date;
     @NotNull
     private Integer score;
     @NotNull
     private Integer roundsPlayed;
 
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
@@ -45,7 +44,7 @@ public class ScoreboardEntryEntity {
         return playerName;
 }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 

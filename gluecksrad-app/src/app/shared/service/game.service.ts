@@ -25,6 +25,7 @@ export class GameService {
   private GUESS_QUESTION = `${this.BASE_URL}\\game\\guess\\question`;
   private GUESS_CHARACTER = `${this.BASE_URL}\\game\\guess\\character`;
   private TURN_WHEEL = `${this.BASE_URL}\\game\\turnwheel`;
+  private SET_BANKRUPT = `${this.BASE_URL}\\game\\bankrupt`;
 
 
   private gameStateSubject: BehaviorSubject<Gamestate>;
@@ -32,14 +33,14 @@ export class GameService {
   private playerSubject: BehaviorSubject<Player>;
   public player: Observable<Player>;
 
-  constructor(private http:HttpClient) {
+  constructor(private http: HttpClient) {
     this.gameStateSubject = new BehaviorSubject<Gamestate>(JSON.parse(sessionStorage.getItem('gameState')));
     this.gameState = this.gameStateSubject.asObservable();
     this.playerSubject = new BehaviorSubject<Player>(JSON.parse(sessionStorage.getItem('player')));
     this.player = this.playerSubject.asObservable();
   }
 
-  setPlayer(player:Player){
+  setPlayer(player: Player){
     sessionStorage.setItem('player', JSON.stringify(player));
     this.playerSubject.next(player);
   }
@@ -53,7 +54,10 @@ export class GameService {
     return this.gameState;
   }
 
-  endGame(entry:ScoreboardEntry):Observable<ScoreboardEntry>{
+  endGame(entry?: ScoreboardEntry):Observable<ScoreboardEntry>{
+    if(!entry){
+      return;
+    }
     sessionStorage.removeItem('gameState');
     this.gameStateSubject.next(null);
     sessionStorage.removeItem('player');
@@ -95,16 +99,33 @@ export class GameService {
     return this.gameState;
   }
 
-  guessCharacter(scoreOnStake:number,character:string){
-     this.http.post<Gamestate>(this.GUESS_CHARACTER, new Guess(character,scoreOnStake)).subscribe(
+  async guessCharacter(scoreOnStake: number, character: string){
+    await this.http.post<Gamestate>(this.GUESS_CHARACTER, new Guess(character,scoreOnStake)).toPromise().then(
       res=>{
         sessionStorage.setItem('gameState',JSON.stringify(res));
         this.gameStateSubject.next(res);
       }
     );
+     return this.gameState;
   }
 
-  guessQuestionAnswer(guessedAnswer:string,):Observable<boolean>{
-    return this.http.post<boolean>(this.GUESS_QUESTION,guessedAnswer);
+  async guessQuestionAnswer(guess: Guess){
+    await this.http.post<Gamestate>(this.GUESS_QUESTION,guess).toPromise().then(
+      res=>{
+        sessionStorage.setItem('gameState',JSON.stringify(res));
+        this.gameStateSubject.next(res);
+      }
+    );
+    return this.gameState;
+  }
+
+  async setBankrupt(bankrupt: boolean){
+    await this.http.post<Gamestate>(this.SET_BANKRUPT,true).toPromise().then(
+      res=>{
+        sessionStorage.setItem('gameState',JSON.stringify(res));
+        this.gameStateSubject.next(res);
+    }
+    );
+    return this.gameState;
   }
 }

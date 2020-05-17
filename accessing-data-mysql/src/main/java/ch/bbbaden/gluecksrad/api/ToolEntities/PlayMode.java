@@ -1,4 +1,4 @@
-package ch.bbbaden.gluecksrad.api.viewmodel;
+package ch.bbbaden.gluecksrad.api.ToolEntities;
 
 public enum  PlayMode {
     BANKRUPT,

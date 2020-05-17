@@ -13,4 +13,5 @@ export interface Gamestate {
   currentQuestion?: Question;
   currentSentence?: Sentence;
   category?: Category;
+
 }
