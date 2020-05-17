@@ -23,13 +23,6 @@ public class GameController {
     @Autowired
     SentenceEntityRepository sentenceEntityRepository;
     private Game gameLogic;
-    /*private List<QuestionEntity> questions = new ArrayList<>();
-    private List<SentenceEntity> sentences = new ArrayList<>();
-    private String sentenceToGuess = "";
-    private String hiddenCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ";
-    private String guessedCharacters = "";
-    private Gamestate gamestate = new Gamestate();
-    private String vocals = "aeiouAEIOU";*/
 
     @GetMapping(path="/start")
     public @ResponseBody
@@ -70,27 +63,4 @@ public class GameController {
     Gamestate getQuestion() {
        return gameLogic.getQuestion();
     }
-
-    /*private Gamestate setSentence(){
-        SentenceEntity sentence = setRandomSentence();
-        hideCharacters(sentence);
-        gamestate.currentSentence=sentence;
-        gamestate.category=sentence.getCategory();
-        return gamestate;
-    }
-
-    private void hideCharacters(SentenceEntity sentence) {
-        String text = sentence.getSentence();
-        for(char character : hiddenCharacters.toCharArray()){
-            text =  text.replace(character, '*');
-        }
-        sentence.setSentence(text);
-    }
-
-    private SentenceEntity setRandomSentence() {
-        Random rand = new Random();
-        var index = rand.nextInt(this.sentences.size());
-        this.sentenceToGuess = this.sentences.get(index).getSentence();
-        return this.sentences.get(index);
-    }*/
 }
