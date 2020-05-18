@@ -18,19 +18,18 @@ export class QuestionsComponent implements OnInit {
     guard.canActivate(route.snapshot, router.routerState.snapshot);
   }
 
-  ngOnInit(): void {
-    this.getQuestions();
+  async ngOnInit() {
+   await this.getQuestions();
   }
 
   public getQuestions(){
-    this.questionService.getAllQuestions().subscribe(
-  res=>{
-      this.questions = res;
-  },
-  err=>{
-      alert("An error has occured while trying to get questions!")
-  }
-  );
+    this.questionService.getAllQuestions().toPromise().then(
+      res=>{
+        this.questions = res;
+      },
+      err=>{
+        alert("An error has occured while trying to get questions!")
+      });
 }
 
   addNewQuestion() {
@@ -51,7 +50,7 @@ export class QuestionsComponent implements OnInit {
 
   editQuestion(question: Question) {
     this.questionService.setQuestion(question);
-   this.router.navigateByUrl("admin/questions/edit");
+    this.router.navigateByUrl("admin/questions/edit");
   }
 
   deleteAll() {

@@ -14,7 +14,7 @@ public class ScoreboardEntryEntity {
     @NotNull
     private Integer id;
     @NotNull
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$")
     private String playerName;
     @NotNull
     private String date;

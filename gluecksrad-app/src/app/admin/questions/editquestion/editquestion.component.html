@@ -5,9 +5,7 @@
     <div class="card-body">
       <form [formGroup]="questionForm" (ngSubmit)="save()">
         <div class="form-group">
-          <input placeholder="text" type="text" formControlName="text" class="form-control" minlength="10"
-
-                 [ngClass]="{ 'is-invalid': submitted && f.text.errors }" />
+          <input placeholder="text" type="text" formControlName="text" class="form-control" minlength="10" [ngClass]="{ 'is-invalid': submitted && f.text.errors }" />
           <div *ngIf="submitted && f.text.errors" class="invalid-feedback">
             <div *ngIf="f.text.errors.required">Question is required</div>
             <div *ngIf="f.text.errors.pattern">Contains forbidden characters! Only use {{allowedCharacters}} </div>
@@ -32,7 +30,7 @@
           <label for="category">
             Category
           </label>
-          <select id="category" name="category" class="form-control" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+          <select id="category" name="category" class="form-control mat-select" formControlName="category" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
             <option *ngFor="let category of categories" [value]="category.id">
               {{category.text}}
             </option>

@@ -48,7 +48,7 @@
     </div>
     <div class="col">
       <div class="playbuttons">
-        <button [disabled]="gameState.nothingLeftToGuess" (click)="turnWheel()" type="button" class="btn-success">Turn wheel</button>
+        <button [disabled]="gameState.nothingLeftToGuess || !ready" (click)="turnWheel()" type="button" class="btn-success">Turn wheel</button>
         <br/>
         <button [disabled]="gameState.score<400" (click)="buyVocal()" type="button" class="btn-success">Buy vocal (400$)</button>
         <br/>

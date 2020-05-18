@@ -8,6 +8,7 @@ import {MatDialogRef} from "@angular/material/dialog";
 })
 export class VocalInputDialogComponent implements OnInit {
   vocalForm:FormGroup;
+  submitted = false;
   constructor(private formBuilder: FormBuilder,
               private dialogRef: MatDialogRef<VocalInputDialogComponent>,) {
   }
@@ -24,6 +25,7 @@ export class VocalInputDialogComponent implements OnInit {
   }
 
   submit(){
+    this.submitted = true;
     if(this.vocalForm.invalid){
       return;
     }

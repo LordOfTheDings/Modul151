@@ -5,16 +5,16 @@ import {Validators} from "@angular/forms";
   providedIn: 'root'
 })
 export class InputValidationService {
-  validators: Validators[] = [Validators.pattern('^[+ a-zA-Z0-9&?.,!@]{0,}$'),Validators.required];
+  validators: Validators[] = [Validators.pattern("^[+ a-zA-Z0-9&?.,'!@]{0,}$"),Validators.required];
   constructor() { }
 
   public getValidators(){
     return this.validators;
   }
   public getAllowedCharacters():string{
-    return '+ a-zA-Z0-9&?.,!@';
+    return "+ a-zA-Z0-9&?.,'!@";
   }
   public getPattern():string {
-    return '^[+ a-zA-Z0-9&?.,!@]{0,}$';
+    return "^[+ a-zA-Z0-9&?.,'!@]{0,}$";
   }
 }

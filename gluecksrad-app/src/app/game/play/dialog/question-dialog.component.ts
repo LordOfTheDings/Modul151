@@ -24,7 +24,7 @@ export class QuestionDialogComponent implements OnInit {
   }
 
   OnAnswerOne(){
-    alert("That's correct!");
+    alert("That's correct!\n You win "+this.amount+"$");
     this.dialogRef.close(new Guess(this.question.answerCorrect,this.amount));
   }
 

@@ -14,7 +14,7 @@ public class SentenceEntity {
     @Column(unique = true)
     @Size(min=1,message = "sentence must have at least 1 character")
     @NotNull
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$")
     private String sentence;
     @NotNull
     @ManyToOne

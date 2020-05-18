@@ -22,7 +22,8 @@ export class PlayComponent implements OnInit {
   scoreboardEntry: ScoreboardEntry;
   gameState: Gamestate;
   sentenceForm: FormGroup;
-  player:Player;
+  player: Player;
+  ready: boolean = false;
   allowedCharacters = new InputValidationService().getAllowedCharacters();
   validators = new InputValidationService().getValidators();
 
@@ -34,11 +35,12 @@ export class PlayComponent implements OnInit {
      this.gameService.player.subscribe(player => this.player = player);
   }
 
-    ngOnInit() {
+  async ngOnInit() {
       this.sentenceForm = this.formBuilder.group({
       sentence: ['', this.validators]
     });
-    this.gameService.startGame();
+   await this.gameService.startGame();
+   this.ready = true;
   }
 
   async guess(){
@@ -76,7 +78,7 @@ export class PlayComponent implements OnInit {
         await this.playMoney();
          break;
        case "BANKRUPT":
-        await this.gameService.setBankrupt(true);
+        await this.playBankrupt();
          break;
        case "RISK":
         await this.playRisk();
@@ -131,10 +133,6 @@ export class PlayComponent implements OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     await this.gameService.getRandomQuestion();
-    dialogConfig.position = {
-      top: '300',
-      left: '400',
-    };
 
     dialogConfig.data =new QuestionData(this.gameState.score,this.gameState.currentQuestion);
     const dialogRef =  this.dialog.open(QuestionDialogComponent,dialogConfig);
@@ -148,6 +146,12 @@ export class PlayComponent implements OnInit {
     );
     this.checkForLost();
     this.checkForWon();
+  }
+
+  async playBankrupt(){
+    alert("You're bankrupt!\n Game over!");
+    this.gameService.endGame(null);
+    this.router.navigateByUrl("game");
   }
 
   endSession():void{

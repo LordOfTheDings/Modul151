@@ -16,7 +16,7 @@ public class CategoryEntity {
     private Integer id;
     @NotNull
     @Size(min=1, message = "category must have at least 1 character")
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$",message = "Forbidden characters used!")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$",message = "Forbidden characters used!")
     private String text;
 
     public Integer getId() {

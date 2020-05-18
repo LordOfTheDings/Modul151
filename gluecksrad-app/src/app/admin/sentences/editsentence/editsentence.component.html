@@ -15,7 +15,7 @@
           <label for="category">
             Category
           </label>
-          <select id="category" name="category" class="form-control" formControlName="category">
+          <select id="category" name="category" class="form-control mat-select" formControlName="category">
             <option *ngFor="let category of categories" [value]="category.id">
               {{category.text}}
             </option>

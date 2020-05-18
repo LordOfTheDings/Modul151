@@ -8,5 +8,9 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Reflect" level="application" />
+    <orderEntry type="library" name="zone" level="application" />
+    <orderEntry type="library" name="long-stack-trace-zone" level="application" />
+    <orderEntry type="library" name="system" level="application" />
   </component>
 </module>

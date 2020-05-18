@@ -25,7 +25,6 @@ export class GameService {
   private GUESS_QUESTION = `${this.BASE_URL}\\game\\guess\\question`;
   private GUESS_CHARACTER = `${this.BASE_URL}\\game\\guess\\character`;
   private TURN_WHEEL = `${this.BASE_URL}\\game\\turnwheel`;
-  private SET_BANKRUPT = `${this.BASE_URL}\\game\\bankrupt`;
 
 
   private gameStateSubject: BehaviorSubject<Gamestate>;
@@ -65,8 +64,8 @@ export class GameService {
     return this.http.post<ScoreboardEntry>(this.ADD_SCOREBOARD_ENTRY,entry);
   }
 
-   startGame(){
-     this.http.get<Gamestate>(this.START_GAME).subscribe(
+  async startGame(){
+   await  this.http.get<Gamestate>(this.START_GAME).toPromise().then(
       res=>{
         sessionStorage.setItem('gameState', JSON.stringify(res));
         this.gameStateSubject.next(res);
@@ -115,16 +114,6 @@ export class GameService {
         sessionStorage.setItem('gameState',JSON.stringify(res));
         this.gameStateSubject.next(res);
       }
-    );
-    return this.gameState;
-  }
-
-  async setBankrupt(bankrupt: boolean){
-    await this.http.post<Gamestate>(this.SET_BANKRUPT,true).toPromise().then(
-      res=>{
-        sessionStorage.setItem('gameState',JSON.stringify(res));
-        this.gameStateSubject.next(res);
-    }
     );
     return this.gameState;
   }

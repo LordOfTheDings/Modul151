@@ -9,6 +9,9 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class GameTest {
 
+    //some of these may fall under integration tests, because of the fact
+    // that multiple private methods are tested alongside public ones (at once)
+
     @Test
     void startGame() {
         List<SentenceEntity> sentences = new ArrayList<>();
@@ -42,7 +45,6 @@ class GameTest {
         assertEquals(PlayMode.MONEY, game.getGamestate().currentMode);
     }
 
-
     @Test
     void guessSentenceIncorrect() {
         List<SentenceEntity> sentences = new ArrayList<>();
@@ -54,6 +56,7 @@ class GameTest {
         game.startGame(new ArrayList<QuestionEntity>().iterator(), sentences.iterator(),"");
         game.guessSentence("hell");
         assertEquals(2, game.getGamestate().lives);
+        assertFalse(game.getGamestate().isWon);
     }
 
     @Test
@@ -67,7 +70,7 @@ class GameTest {
         game.startGame(new ArrayList<QuestionEntity>().iterator(), sentences.iterator(),"");
         game.guessSentence("hello");
         assertEquals(3, game.getGamestate().lives);
-        assertEquals(true, game.getGamestate().isWon);
+        assertTrue(game.getGamestate().isWon);
     }
 
     @Test
@@ -243,6 +246,6 @@ class GameTest {
         assertEquals(0, game.getGamestate().score);
         assertEquals("Th*s",game.getGamestate().currentSentence.getSentence());
         assertEquals(3, game.getGamestate().lives);
-        assertEquals(true, game.getGamestate().nothingLeftToGuess);
+        assertTrue(game.getGamestate().nothingLeftToGuess);
     }
 }

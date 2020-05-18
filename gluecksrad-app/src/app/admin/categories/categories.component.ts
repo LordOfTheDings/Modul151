@@ -19,8 +19,8 @@ export class CategoriesComponent implements OnInit {
     guard.canActivate(route.snapshot, router.routerState.snapshot);
   }
 
-  ngOnInit(): void {
-    this.categoryService.getAllCategories().subscribe(
+ async ngOnInit() {
+   await this.categoryService.getAllCategories().toPromise().then(
       res=>{
         this.categories = res;
       },

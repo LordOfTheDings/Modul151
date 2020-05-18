@@ -18,8 +18,8 @@ sentences:Sentence[];
     guard.canActivate(route.snapshot, router.routerState.snapshot);
   }
 
-  ngOnInit(): void {
-    this.sentenceService.getAllSentences().subscribe(
+  async ngOnInit() {
+   await this.sentenceService.getAllSentences().toPromise().then(
       res=>{
         this.sentences = res;
       },
@@ -49,7 +49,6 @@ sentences:Sentence[];
     this.sentenceService.setSentence(sentence);
     this.router.navigateByUrl("admin/sentences/edit");
   }
-
 
   deleteAll() {
     this.sentenceService.deleteAll().subscribe(

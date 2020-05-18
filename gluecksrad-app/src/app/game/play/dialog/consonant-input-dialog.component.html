@@ -5,7 +5,7 @@
     <div class="card-body">
       <form [formGroup]="consonantForm" (ngSubmit)="submit()">
         <div class="form-group">
-          <input placeholder="consonant" type="text" formControlName="consonant" class="form-control" [ngClass]="{ 'is-invalid':f.consonant.value.length >0&& f.consonant.errors}" />
+          <input placeholder="consonant" type="text" formControlName="consonant" class="form-control" [ngClass]="{ 'is-invalid':submitted&& f.consonant.errors}" />
           <div *ngIf=" f.consonant.errors" class="invalid-feedback">
             <div *ngIf="f.consonant.errors.required">consonant is required</div>
             <div *ngIf="f.consonant.errors.pattern">Contains forbidden characters! Only use consonants!</div>

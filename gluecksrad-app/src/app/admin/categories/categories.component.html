@@ -4,7 +4,8 @@
       <i class="fa fa-plus"> New category</i>
     </button>
   </div>
-<a *ngFor="let category of categories" class="list-group-item list-group-item-light row">
+  <div style="margin-bottom: 50px">
+<a *ngFor="let category of categories" class="list-group-item list-group-item-light row" style="margin-bottom: 5px; margin-top: 5px">
   <i class="fa fa-list-ul"></i>&nbsp;
   <span title="">CATEGORY:   {{category.text}}   </span>
   <a title="delete" class="pull-right text-danger">
@@ -14,4 +15,5 @@
     <i (click)= "editCategory(category)"class="fa fa-edit"></i>
   </a>
 </a>
+  </div>
 </div>

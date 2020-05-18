@@ -9,7 +9,8 @@ import {MAT_DIALOG_DATA, MatDialogRef} from "@angular/material/dialog";
 export class ConsonantInputDialog implements OnInit {
 
   consonantForm:FormGroup;
-   amountAtStake = 0;
+  amountAtStake = 0;
+  submitted = false;
 
   constructor(private formBuilder: FormBuilder,
               private dialogRef: MatDialogRef<ConsonantInputDialog>,
@@ -30,6 +31,7 @@ export class ConsonantInputDialog implements OnInit {
   }
 
   submit(){
+    this.submitted = true;
     if(this.consonantForm.invalid){
       return;
     }

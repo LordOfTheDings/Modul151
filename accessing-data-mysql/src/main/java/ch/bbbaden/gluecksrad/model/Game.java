@@ -13,6 +13,7 @@ public class Game {
     private List<QuestionEntity> questions = new ArrayList<>();
     private List<SentenceEntity> sentences = new ArrayList<>();
     private String sentenceToGuess = "";
+    private String guessedCharacters="";
     private Gamestate gamestate;
     Random randomGenerator = new Random();
 
@@ -34,6 +35,8 @@ public class Game {
         ++gamestate.roundsPlayed;
         if(random <= 3){
             gamestate.currentMode = PlayMode.BANKRUPT;
+            gamestate.lives = 0;
+            gamestate.score = 0;
         }else if(random <= 44){
             gamestate.currentMode = PlayMode.MONEY;
         }else{
@@ -53,13 +56,14 @@ public class Game {
     public Gamestate guessSentence(String guess){
         if(!checkForGuessedSentence(sentenceToGuess,guess)){
             --gamestate.lives;
+            return gamestate;
         }
         gamestate.isWon = true;
         return gamestate;
     }
 
     private boolean checkForGuessedSentence(String current, String other) {
-        return current.equals(other);
+        return current.toLowerCase().equals(other.toLowerCase());
     }
 
     private void hideCharacters(SentenceEntity sentence, String hiddenCharacters) {
@@ -86,9 +90,10 @@ public class Game {
     }
 
     public Gamestate guessCharacter(Guess guess){
-        if(gamestate.currentSentence.getSentence().contains(guess.getText())){
+        if(guessedCharacters.contains(guess.getText())){
             return gamestate;
         }
+        guessedCharacters+= guess.getText();
         this.gamestate.currentSentence.setSentence(updateSentence(guess.getText()));
         evaluateCharacterGuess(guess);
         gamestate.isWon = checkForGuessedSentence(this.gamestate.currentSentence.getSentence(),sentenceToGuess);
@@ -149,10 +154,10 @@ public class Game {
 
     private QuestionEntity findRandomQuestion(){
         QuestionEntity question;
-        //do { commented out momentarily because of lack of questions
+        do {
         //add more questions to each category before commenting in again
         question = questions.get(randomGenerator.nextInt(questions.size()));
-        //} while(question.getCategory()!=gamestate.category);
+        } while(question.getCategory()!=gamestate.category);
         questions.remove(question);
         return question;
     }

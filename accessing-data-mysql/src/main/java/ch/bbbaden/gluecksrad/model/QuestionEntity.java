@@ -9,18 +9,18 @@ import javax.validation.constraints.Size;
 public class QuestionEntity {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    @Column(unique = true)
+    @NotNull
     private Integer id;
     @NotNull
     @Size(min=10,message="question must have at least 10 characters")
     private String text;
     @NotNull
     @Size(min=1,message="answer must have at least 1 character")
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$",message = "Forbidden characters used!")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$",message = "Forbidden characters used!")
     private String answerCorrect;
     @NotNull
     @Size(min=1,message="answer must have at least 1 character")
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,!@]*$",message = "Forbidden characters used!")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$",message = "Forbidden characters used!")
     private String answerIncorrect;
     @NotNull
     @ManyToOne

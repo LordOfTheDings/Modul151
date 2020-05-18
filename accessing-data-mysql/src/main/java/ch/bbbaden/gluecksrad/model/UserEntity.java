@@ -17,11 +17,11 @@ public class UserEntity {
     @Column(unique = true)
     @NotNull
     @Size(min=1,message="userName must have at least 1 character")
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!@]*$")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!'@]*$")
     private String userName;
     @NotNull
     @Size(min=1,max=15,message = "password must have between 1 and 15 characters")
-    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!@]*$")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.!'@]*$")
     private String password;
     @Nullable
     private String authData;

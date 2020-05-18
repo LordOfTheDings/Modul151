@@ -12,23 +12,23 @@ import {ScoreboardEntry} from "../model/scoreboardEntry";
 })
 export class ApiService {
   private BASE_URL="http://localhost:8080";
-  private ALL_QUESTIONS_URL = `${this.BASE_URL}\\admin\\questions\\all`;
-  private ALL_CATEGORIES_URL = `${this.BASE_URL}\\admin\\categories\\all`;
-  private ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\all`;
-  private LOGIN_REQUEST_URL = `${this.BASE_URL}\\admin\\login`;
-  private DELETE_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\delete`;
-  private ADD_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\add`;
-  private EDIT_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\edit`;
-  private DELETE_ALL_QUESTIONS_URL= `${this.BASE_URL}\\admin\\questions\\delete\\all`;
-  private DELETE_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\delete`;
-  private EDIT_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\edit`;
-  private ADD_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\add`;
-  private DELETE_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\delete`;
-  private EDIT_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\edit`;
-  private ADD_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\add`;
-  private DELETE_ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\delete\\all`;
-  private SCOREBOARD_URL = `${this.BASE_URL}\\game\\scoreboard\\all`;
-  private DELETE_SCOREBOARD_ENTRY_URL = `${this.BASE_URL}\\game\\scoreboard\\delete`;
+  public ALL_QUESTIONS_URL = `${this.BASE_URL}\\admin\\questions\\all`;
+  public ALL_CATEGORIES_URL = `${this.BASE_URL}\\admin\\categories\\all`;
+  public ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\all`;
+  public LOGIN_REQUEST_URL = `${this.BASE_URL}\\admin\\login`;
+  public DELETE_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\delete`;
+  public ADD_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\add`;
+  public EDIT_QUESTION_URL = `${this.BASE_URL}\\admin\\questions\\edit`;
+  public DELETE_ALL_QUESTIONS_URL= `${this.BASE_URL}\\admin\\questions\\delete\\all`;
+  public DELETE_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\delete`;
+  public EDIT_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\edit`;
+  public ADD_CATEGORY_URL = `${this.BASE_URL}\\admin\\categories\\add`;
+  public DELETE_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\delete`;
+  public EDIT_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\edit`;
+  public ADD_SENTENCE_URL = `${this.BASE_URL}\\admin\\sentences\\add`;
+  public DELETE_ALL_SENTENCES_URL = `${this.BASE_URL}\\admin\\sentences\\delete\\all`;
+  public SCOREBOARD_URL = `${this.BASE_URL}\\game\\scoreboard\\all`;
+  public DELETE_SCOREBOARD_ENTRY_URL = `${this.BASE_URL}\\game\\scoreboard\\delete`;
 
   constructor(private http:HttpClient) {
   }
