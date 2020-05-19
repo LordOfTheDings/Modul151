@@ -28,8 +28,8 @@ export class PlayComponent implements OnInit {
   validators = new InputValidationService().getValidators();
 
    constructor(private gameService:GameService,
-              private router: Router,
-              private formBuilder: FormBuilder,
+               private router: Router,
+               private formBuilder: FormBuilder,
                public dialog: MatDialog) {
      this.gameService.gameState.subscribe(state=> this.gameState = state);
      this.gameService.player.subscribe(player => this.player = player);

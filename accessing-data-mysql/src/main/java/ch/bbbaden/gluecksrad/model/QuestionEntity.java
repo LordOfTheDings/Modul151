@@ -13,6 +13,7 @@ public class QuestionEntity {
     private Integer id;
     @NotNull
     @Size(min=10,message="question must have at least 10 characters")
+    @Pattern(regexp = "^[+ a-zA-Z0-9&?.,'!@]*$",message = "Forbidden characters used!")
     private String text;
     @NotNull
     @Size(min=1,message="answer must have at least 1 character")

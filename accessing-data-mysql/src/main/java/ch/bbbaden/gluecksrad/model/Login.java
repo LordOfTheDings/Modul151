@@ -8,7 +8,7 @@ public class Login {
     public UserEntity checkLoginRequest(Iterable<UserEntity> users, UserEntity user){
        for (UserEntity currentUser : users) {
            if(user.getUserName().equals(currentUser.getUserName())&&user.getPassword().equals(currentUser.getPassword())){
-               return user;
+               return currentUser;
            }
        }
        return null;
